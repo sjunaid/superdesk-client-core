@@ -701,11 +701,9 @@ angular.module('superdesk.editor', ['superdesk.editor.spellcheck'])
                 keyboardManager.bind('ctrl+shift+d', render);
 
                 ngModel.$render = function () {
-                    if (!scope.history || scope.history.getIndex() === -1) {
-                        editorElem = elem.find('.editor-type-html');
-                        editorElem.empty();
-                        editorElem.html(ngModel.$viewValue || '');
-                    }
+                    editorElem = elem.find('.editor-type-html');
+                    editorElem.empty();
+                    editorElem.html(ngModel.$viewValue || '');
 
                     if (!scope.rendered) {
                         var editorOptions = angular.extend({}, editorConfig, scope.config || {});

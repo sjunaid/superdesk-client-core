@@ -37,10 +37,11 @@ function MacrosService(api, autosave, notify, editor) {
 
     this.call = triggerMacro;
 
-    function triggerMacro(macro, item, commit) {
+    function triggerMacro(macro, item, commit, $scope) {
+        var origItem = Object.getPrototypeOf(item);
         return api.save('macros', {
             macro: macro.name,
-            item: angular.extend({}, item), // get all the properties as shallow copy
+            item: angular.extend(origItem, item), // get all the properties as shallow copy
             commit: !!commit
         }).then(function(res) {
             if (res.diff) {
@@ -51,12 +52,13 @@ function MacrosService(api, autosave, notify, editor) {
                     autosave.save(item);
                 }
             }
-
-            return item;
         }, function(err) {
             if (angular.isDefined(err.data._message)) {
                 notify.error(gettext('Error: ' + err.data._message));
             }
+        })
+        ['finally'](function() {
+            return item;
         });
     }
 }
