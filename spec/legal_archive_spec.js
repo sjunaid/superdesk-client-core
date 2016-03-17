@@ -6,7 +6,7 @@ var workspace = require('./helpers/workspace'),
     legalArchive = require('./helpers/legal_archive');
 var hover = require('./helpers/utils').hover;
 
-describe('legal_archive', function() {
+xdescribe('legal_archive', function() {
     it('can display Legal Archive option in hamburger menu', function () {
         workspace.open();
 

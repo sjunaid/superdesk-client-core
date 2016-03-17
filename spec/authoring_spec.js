@@ -8,7 +8,7 @@ var monitoring = require('./helpers/monitoring'),
     workspace = require('./helpers/workspace'),
     desks = require('./helpers/desks');
 
-describe('authoring', function() {
+xdescribe('authoring', function() {
 
     beforeEach(function() {
         // Opens desk settings, configure monitoring settings and returns to monitoring view

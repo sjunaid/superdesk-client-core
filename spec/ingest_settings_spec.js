@@ -3,7 +3,7 @@ var openUrl = require('./helpers/utils').open,
     ingestSettings = require('./helpers/pages').ingestSettings,
     utils = require('./helpers/utils');
 
-describe('ingest_settings', function() {
+xdescribe('ingest_settings', function() {
 
     beforeEach(function(done) {
         openUrl('/#/settings/ingest').then(done);

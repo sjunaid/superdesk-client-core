@@ -7,7 +7,7 @@ var route = require('./helpers/utils').route,
     highlights = require('./helpers/highlights'),
     desks = require('./helpers/desks');
 
-describe('highlights', function() {
+xdescribe('highlights', function() {
     'use strict';
 
     describe('add highlights configuration:', function() {

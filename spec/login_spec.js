@@ -2,7 +2,7 @@
 var waitForSuperdesk = require('./helpers/utils').waitForSuperdesk;
 var Login = require('./helpers/pages').login;
 
-describe('login', function() {
+xdescribe('login', function() {
     'use strict';
 
     var modal;

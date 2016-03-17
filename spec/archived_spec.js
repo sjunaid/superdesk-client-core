@@ -6,7 +6,7 @@ var openUrl = require('./helpers/utils').open,
     content = require('./helpers/content'),
     monitoring = require('./helpers/monitoring');
 
-describe('archived', function() {
+xdescribe('archived', function() {
 
     beforeEach(function() {
         openUrl('/#/search').then(globalSearch.setListView());

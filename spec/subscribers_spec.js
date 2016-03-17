@@ -1,7 +1,7 @@
 var openUrl = require('./helpers/utils').open,
     subscribers = require('./helpers/subscribers');
 
-describe('subscribers', function() {
+xdescribe('subscribers', function() {
     'use strict';
 
     describe('list subscriber', function() {

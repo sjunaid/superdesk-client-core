@@ -2,7 +2,7 @@
 var openUrl = require('./helpers/utils').open,
     dictionaries = require('./helpers/dictionaries');
 
-describe('dictionaries', function() {
+xdescribe('dictionaries', function() {
     'use strict';
 
     describe('add dictionary', function() {

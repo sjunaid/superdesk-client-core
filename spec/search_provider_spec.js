@@ -3,7 +3,7 @@ var openUrl = require('./helpers/utils').open,
     searchProvider = require('./helpers/pages').searchProvider,
     globalSearch = require('./helpers/search');
 
-describe('search_provider', function() {
+xdescribe('search_provider', function() {
 
     beforeEach(function(done) {
         openUrl('/#/settings/searchProviders').then(done);

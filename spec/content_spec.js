@@ -6,7 +6,7 @@ var openUrl = require('./helpers/utils').open,
     content = require('./helpers/content'),
     authoring = require('./helpers/authoring');
 
-describe('content', function() {
+xdescribe('content', function() {
 
     var body = element(by.tagName('body'));
 

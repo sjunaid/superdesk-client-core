@@ -6,7 +6,7 @@ var workspace = require('./helpers/pages').workspace,
     authoring = require('./helpers/authoring'),
     desks = require('./helpers/desks');
 
-describe('fetch', function() {
+xdescribe('fetch', function() {
     beforeEach(function() {
         workspace.open();
         workspace.switchToDesk('SPORTS DESK');

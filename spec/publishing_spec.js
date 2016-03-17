@@ -25,12 +25,12 @@ describe('publishing', function() {
         expect(publishQueue.getDestination(0).getText()).toMatch(/HTTP Push/);
     });
 
-    it('can preview content', function() {
+    xit('can preview content', function() {
         publishQueue.previewAction(0);
         expect(publishQueue.getPreviewTitle()).toBe('item5');
     });
 
-    it('can search item by headline', function() {
+    xit('can search item by headline', function() {
         publishQueue.searchAction('item5');
         expect(publishQueue.getItemCount()).toBe(1);
         publishQueue.searchAction('item6');
@@ -38,7 +38,7 @@ describe('publishing', function() {
         expect(publishQueue.getItemCount()).toBe(0);
     });
 
-    it('can search item by unique name', function() {
+    xit('can search item by unique name', function() {
         var _uniqueName = publishQueue.getUniqueName(0).getText();
         publishQueue.searchAction(_uniqueName);
         expect(publishQueue.getItemCount()).toBe(1);

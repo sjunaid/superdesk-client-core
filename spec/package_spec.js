@@ -4,7 +4,7 @@ var search = require('./helpers/search'),
     workspace = require('./helpers/workspace'),
     desks = require('./helpers/desks');
 
-describe('package', function() {
+xdescribe('package', function() {
     'use strict';
 
     beforeEach(function() {

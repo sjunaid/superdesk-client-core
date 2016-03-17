@@ -5,7 +5,7 @@ var workspace = require('./helpers/workspace'),
     monitoring = require('./helpers/monitoring'),
     content = require('./helpers/content');
 
-describe('send', function() {
+xdescribe('send', function() {
 
     function getItemState(index) {
         var label = content.getItem(index).element(by.css('.state-label'));
