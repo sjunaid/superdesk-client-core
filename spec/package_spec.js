@@ -1,10 +1,9 @@
 var search = require('./helpers/search'),
     authoring = require('./helpers/pages').authoring,
     monitoring = require('./helpers/monitoring'),
-    workspace = require('./helpers/workspace'),
     desks = require('./helpers/desks');
 
-xdescribe('package', function() {
+describe('package', function() {
     'use strict';
 
     beforeEach(function() {
@@ -12,7 +11,6 @@ xdescribe('package', function() {
         desks.showMonitoringSettings('POLITIC DESK');
         monitoring.turnOffDeskWorkingStage(0);
         monitoring.openMonitoring();
-        expect(workspace.getCurrentDesk()).toEqual('POLITIC DESK');
     });
 
     it('increment package version', function() {

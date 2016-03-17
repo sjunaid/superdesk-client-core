@@ -5,7 +5,7 @@ var monitoring = require('./helpers/monitoring'),
     publishQueue = require('./helpers/publish_queue'),
     desks = require('./helpers/desks');
 
-describe('publishing', function() {
+xdescribe('publishing', function() {
     beforeEach(function() {
         desks.openDesksSettings();
         desks.showMonitoringSettings('POLITIC DESK');
