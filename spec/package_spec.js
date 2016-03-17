@@ -21,7 +21,7 @@ describe('package', function() {
         expect(element.all(by.repeater('version in versions')).count()).toBe(2);
     });
 
-    xit('reorder item on package', function() {
+    it('reorder item on package', function() {
         monitoring.actionOnItem('Edit', 2, 0);
         monitoring.actionOnItemSubmenu('Add to current', 'main', 1, 0);
         monitoring.actionOnItemSubmenu('Add to current', 'story', 2, 1);
@@ -64,7 +64,7 @@ describe('package', function() {
         expect(authoring.getGroupItems('STORY').count()).toBe(0);
     });
 
-    xit('create package from published item', function() {
+    it('create package from published item', function() {
         expect(monitoring.getTextItem(1, 0)).toBe('item5');
         monitoring.actionOnItem('Edit', 1, 0);
         authoring.writeText('some text');
