@@ -15,6 +15,7 @@ describe('package', function() {
 
     it('increment package version', function() {
         monitoring.actionOnItem('Edit', 2, 0);
+        browser.sleep(100);
         monitoring.actionOnItemSubmenu('Add to current', 'main', 1, 0);
         authoring.save();
         authoring.showVersions();
@@ -23,8 +24,11 @@ describe('package', function() {
 
     it('reorder item on package', function() {
         monitoring.actionOnItem('Edit', 2, 0);
+        browser.sleep(100);
         monitoring.actionOnItemSubmenu('Add to current', 'main', 1, 0);
+        browser.sleep(100);
         monitoring.actionOnItemSubmenu('Add to current', 'story', 2, 1);
+        browser.sleep(100);
         authoring.moveToGroup('MAIN', 0, 'STORY', 0);
         expect(authoring.getGroupItems('MAIN').count()).toBe(0);
         expect(authoring.getGroupItems('STORY').count()).toBe(2);
@@ -57,7 +61,9 @@ describe('package', function() {
 
     it('can add an item to an existing package only once', function() {
         monitoring.actionOnItem('Edit', 2, 0);
+        browser.sleep(100);
         monitoring.actionOnItemSubmenu('Add to current', 'main', 1, 0);
+        browser.sleep(100);
         monitoring.actionOnItemSubmenu('Add to current', 'story', 1, 0);
         authoring.save();
         expect(authoring.getGroupItems('MAIN').count()).toBe(1);
@@ -67,6 +73,7 @@ describe('package', function() {
     it('create package from published item', function() {
         expect(monitoring.getTextItem(1, 0)).toBe('item5');
         monitoring.actionOnItem('Edit', 1, 0);
+        browser.sleep(100);
         authoring.writeText('some text');
         authoring.save();
         authoring.publish();
@@ -76,6 +83,7 @@ describe('package', function() {
         search.toggleByType('text');
         expect(search.getTextItem(0)).toBe('item5');
         search.actionOnItem('Create package', 0);
+        browser.sleep(100);
         expect(authoring.getGroupItems('MAIN').count()).toBe(1);
     });
 

@@ -239,7 +239,7 @@ function assertToastMsg(type, msg) {
 function wait(elem, time) {
     return browser.wait(function() {
         return elem.isDisplayed();
-    }, time || 500);
+    }, time || 1000);
 }
 
 /**
