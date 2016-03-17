@@ -21,7 +21,7 @@ describe('package', function() {
         expect(element.all(by.repeater('version in versions')).count()).toBe(2);
     });
 
-    it('reorder item on package', function() {
+    xit('reorder item on package', function() {
         monitoring.actionOnItem('Edit', 2, 0);
         monitoring.actionOnItemSubmenu('Add to current', 'main', 1, 0);
         monitoring.actionOnItemSubmenu('Add to current', 'story', 2, 1);
@@ -48,14 +48,14 @@ describe('package', function() {
         //There is no preview in preview, SD-3319
     });
 
-    it('create package from multiple items', function() {
+    xit('create package from multiple items', function() {
         monitoring.selectItem(1, 0);
         monitoring.selectItem(1, 1);
         monitoring.createPackageFromItems();
         expect(authoring.getGroupItems('MAIN').count()).toBe(2);
     });
 
-    it('can add an item to an existing package only once', function() {
+    xit('can add an item to an existing package only once', function() {
         monitoring.actionOnItem('Edit', 2, 0);
         monitoring.actionOnItemSubmenu('Add to current', 'main', 1, 0);
         monitoring.actionOnItemSubmenu('Add to current', 'story', 1, 0);
@@ -64,7 +64,7 @@ describe('package', function() {
         expect(authoring.getGroupItems('STORY').count()).toBe(0);
     });
 
-    it('create package from published item', function() {
+    xit('create package from published item', function() {
         expect(monitoring.getTextItem(1, 0)).toBe('item5');
         monitoring.actionOnItem('Edit', 1, 0);
         authoring.writeText('some text');
@@ -79,7 +79,7 @@ describe('package', function() {
         expect(authoring.getGroupItems('MAIN').count()).toBe(1);
     });
 
-    it('create package by combining an item with open item', function() {
+    xit('create package by combining an item with open item', function() {
         monitoring.openMonitoring();
         monitoring.openAction(1, 0);
         browser.sleep(500);
