@@ -3,7 +3,6 @@
 var monitoring = require('./helpers/monitoring'),
     authoring = require('./helpers/authoring'),
     publishQueue = require('./helpers/publish_queue'),
-    workspace = require('./helpers/workspace'),
     desks = require('./helpers/desks');
 
 describe('publishing', function() {
@@ -12,7 +11,6 @@ describe('publishing', function() {
         desks.showMonitoringSettings('POLITIC DESK');
         monitoring.turnOffDeskWorkingStage(0);
         monitoring.openMonitoring();
-        expect(workspace.getCurrentDesk()).toEqual('POLITIC DESK');
 
         expect(monitoring.getTextItem(1, 0)).toBe('item5');
         monitoring.actionOnItem('Edit', 1, 0);
