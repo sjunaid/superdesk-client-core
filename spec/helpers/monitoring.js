@@ -243,7 +243,7 @@ function Monitoring() {
             .mouseMove(header, {x: -5, y: -5})
             .mouseMove(header)
             .perform();
-        waitFor(btn);
+        waitFor(btn, 500);
         btn.click();
     };
 

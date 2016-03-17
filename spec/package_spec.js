@@ -55,7 +55,7 @@ describe('package', function() {
         expect(authoring.getGroupItems('MAIN').count()).toBe(2);
     });
 
-    xit('can add an item to an existing package only once', function() {
+    it('can add an item to an existing package only once', function() {
         monitoring.actionOnItem('Edit', 2, 0);
         monitoring.actionOnItemSubmenu('Add to current', 'main', 1, 0);
         monitoring.actionOnItemSubmenu('Add to current', 'story', 1, 0);
