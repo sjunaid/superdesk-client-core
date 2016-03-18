@@ -11,11 +11,12 @@ describe('package', function() {
         desks.showMonitoringSettings('POLITIC DESK');
         monitoring.turnOffDeskWorkingStage(0);
         monitoring.openMonitoring();
-        browser.sleep(500);
+        browser.sleep(5000);
     });
 
     it('increment package version', function() {
         monitoring.actionOnItem('Edit', 2, 0);
+        browser.sleep(100);
         monitoring.actionOnItemSubmenu('Add to current', 'main', 1, 0);
         authoring.save();
         authoring.showVersions();
@@ -58,6 +59,7 @@ describe('package', function() {
 
     it('can add an item to an existing package only once', function() {
         monitoring.actionOnItem('Edit', 2, 0);
+        browser.sleep(100);
         monitoring.actionOnItemSubmenu('Add to current', 'main', 1, 0);
         monitoring.actionOnItemSubmenu('Add to current', 'story', 1, 0);
         authoring.save();
