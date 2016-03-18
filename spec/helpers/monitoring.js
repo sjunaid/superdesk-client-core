@@ -240,7 +240,7 @@ function Monitoring() {
         var header = menu.element(by.partialLinkText(action));
         var btn = menu.element(by.partialButtonText(submenu));
         browser.actions()
-            .mouseMove(header, {x: -5, y: -5})
+            .mouseMove(header, {x: -50, y: -50})
             .mouseMove(header)
             .perform();
         waitFor(btn, 1000);
