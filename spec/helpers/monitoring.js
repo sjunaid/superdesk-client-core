@@ -71,7 +71,7 @@ function Monitoring() {
 
         browser.wait(function() {
             return all.count();
-        }, 5000);
+        }, 7500);
 
         if (item.type) {
             return all.filter(function(elem) {
@@ -243,7 +243,7 @@ function Monitoring() {
             .mouseMove(header, {x: -5, y: -5})
             .mouseMove(header)
             .perform();
-        waitFor(btn);
+        waitFor(btn, 1000);
         btn.click();
     };
 
@@ -286,7 +286,7 @@ function Monitoring() {
             .mouseMove(itemElem) // now it can mouseover for sure
             .perform();
         var dotsElem = itemElem.element(by.className('icon-dots-vertical'));
-        waitFor(dotsElem, 500);
+        waitFor(dotsElem, 1000);
         dotsElem.click();
         return element(by.css('.dropdown-menu.open'));
     };
