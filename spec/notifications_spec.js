@@ -8,7 +8,7 @@ var authoring = require('./helpers/authoring'),
 var Login = require('./helpers/pages').login;
 var logout = require('./helpers/pages').logout;
 
-describe('notifications', function() {
+xdescribe('notifications', function() {
 
     beforeEach(function() {
         desks.openDesksSettings();
