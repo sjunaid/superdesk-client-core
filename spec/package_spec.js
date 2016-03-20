@@ -15,11 +15,9 @@ describe('package', function() {
         browser.sleep(7500);
     });
 
-    it('increment package version', function() {
+    fit('increment package version', function() {
         monitoring.actionOnItem('Edit', 2, 0);
-        browser.wait(function() {
-            return monitoring.actionOnItemSubmenu('Add to current', 'main', 1, 0);
-        }, 2000);
+        monitoring.actionOnItemSubmenu('Add to current', 'main', 1, 0);
         authoring.save();
         authoring.showVersions();
         expect(element.all(by.repeater('version in versions')).count()).toBe(2);
