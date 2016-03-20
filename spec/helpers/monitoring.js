@@ -67,18 +67,15 @@ function Monitoring() {
      * @return {WebElement}
      */
     this.getItem = function(group, item) {
-        var all = this.getGroupItems(group);
-        browser.driver.wait(function() {
-            return all.count();
-        }, 7500);
-
-        if (item.type) {
-            return all.filter(function(elem) {
-                return elem.all(by.className('filetype-icon-' + item.type)).count();
-            }).get(item.index || 0);
-        } else {
-            return all.get(item);
-        }
+        return this.getGroupItems(group).then(function(all) {
+            if (item.type) {
+                return all.filter(function(elem) {
+                    return elem.all(by.className('filetype-icon-' + item.type)).count();
+                }).get(item.index || 0);
+            } else {
+                return all.get(item);
+            }
+        });
     };
 
     this.getGroupItems = function(group) {
