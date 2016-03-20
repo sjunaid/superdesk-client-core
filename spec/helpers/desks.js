@@ -90,25 +90,7 @@ function Desks() {
                 return element.all(by.css('.aggregate-widget-config')).isDisplayed();
             });
             element.all(by.css('[ng-click="goTo(step)"]')).first().click();
-
-            browser.sleep(500);
         });
-    };
-
-    this.turnOffDeskWorkingStage = function(deskIndex, canCloseSettingsModal) {
-        this.showMonitoringSettings('POLITIC DESK');
-        this.toggleStage(deskIndex, 0);
-
-        if (typeof canCloseSettingsModal !== 'boolean') {
-            canCloseSettingsModal = true;
-        }
-
-        if (canCloseSettingsModal) {
-            this.nextStages();
-            this.nextSearches();
-            this.nextReorder();
-            this.saveSettings();
-        }
     };
 
     /**

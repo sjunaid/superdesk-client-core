@@ -8,7 +8,8 @@ describe('package', function() {
 
     beforeEach(function() {
         desks.openDesksSettings();
-        desks.turnOffDeskWorkingStage();
+        desks.showMonitoringSettings('POLITIC DESK');
+        monitoring.turnOffDeskWorkingStage();
         monitoring.openMonitoring();
         browser.sleep(7500);
     });
@@ -59,13 +60,10 @@ describe('package', function() {
 
     it('can add an item to an existing package only once', function() {
         monitoring.actionOnItem('Edit', 2, 0);
-        browser.wait(function() {
-            monitoring.actionOnItemSubmenu('Add to current', 'main', 1, 0);
-        }, 2000);
-        browser.wait(function() {
-            monitoring.actionOnItemSubmenu('Add to current', 'story', 1, 0);
-        }, 2000);
-
+        browser.sleep(2000);
+        monitoring.actionOnItemSubmenu('Add to current', 'main', 1, 0);
+        browser.sleep(2000);
+        monitoring.actionOnItemSubmenu('Add to current', 'story', 1, 0);
         authoring.save();
         expect(authoring.getGroupItems('MAIN').count()).toBe(1);
         expect(authoring.getGroupItems('STORY').count()).toBe(0);
