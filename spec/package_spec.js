@@ -11,7 +11,7 @@ describe('package', function() {
         desks.showMonitoringSettings('POLITIC DESK');
         monitoring.turnOffDeskWorkingStage(0);
         monitoring.openMonitoring();
-        browser.sleep(5000);
+        browser.sleep(7500);
     });
 
     it('increment package version', function() {
@@ -25,7 +25,7 @@ describe('package', function() {
 
     it('reorder item on package', function() {
         monitoring.actionOnItem('Edit', 2, 0);
-        browser.sleep(300);
+        browser.sleep(2000);
         monitoring.actionOnItemSubmenu('Add to current', 'main', 1, 0);
         monitoring.actionOnItemSubmenu('Add to current', 'story', 2, 1);
         authoring.moveToGroup('MAIN', 0, 'STORY', 0);
@@ -60,7 +60,7 @@ describe('package', function() {
 
     it('can add an item to an existing package only once', function() {
         monitoring.actionOnItem('Edit', 2, 0);
-        browser.sleep(300);
+        browser.sleep(2000);
         monitoring.actionOnItemSubmenu('Add to current', 'main', 1, 0);
         monitoring.actionOnItemSubmenu('Add to current', 'story', 1, 0);
         authoring.save();

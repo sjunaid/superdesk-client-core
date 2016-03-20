@@ -68,7 +68,7 @@ function Monitoring() {
      */
     this.getItem = function(group, item) {
         var all = this.getGroupItems(group);
-        waitFor(all, 7500);       
+        waitFor(all, 7500);
 
         if (item.type) {
             return all.filter(function(elem) {
