@@ -7,6 +7,8 @@ describe('package', function() {
     'use strict';
 
     beforeEach(function() {
+        monitoring.openMonitoring();
+        browser.sleep(1000);
         desks.openDesksSettings();
         desks.showMonitoringSettings('POLITIC DESK');
         monitoring.turnOffDeskWorkingStage(0);
@@ -16,7 +18,7 @@ describe('package', function() {
 
     it('increment package version', function() {
         monitoring.actionOnItem('Edit', 2, 0);
-        browser.sleep(300);
+        browser.sleep(2000);
         monitoring.actionOnItemSubmenu('Add to current', 'main', 1, 0);
         authoring.save();
         authoring.showVersions();
@@ -27,6 +29,7 @@ describe('package', function() {
         monitoring.actionOnItem('Edit', 2, 0);
         browser.sleep(2000);
         monitoring.actionOnItemSubmenu('Add to current', 'main', 1, 0);
+        browser.sleep(2000);
         monitoring.actionOnItemSubmenu('Add to current', 'story', 2, 1);
         authoring.moveToGroup('MAIN', 0, 'STORY', 0);
         expect(authoring.getGroupItems('MAIN').count()).toBe(0);
