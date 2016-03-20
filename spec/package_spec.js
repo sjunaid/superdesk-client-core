@@ -7,7 +7,6 @@ describe('package', function() {
     'use strict';
 
     beforeEach(function() {
-        browser.sleep(1000);
         desks.openDesksSettings();
         desks.showMonitoringSettings('POLITIC DESK');
         monitoring.turnOffDeskWorkingStage();
@@ -15,7 +14,7 @@ describe('package', function() {
         browser.sleep(7500);
     });
 
-    fit('increment package version', function() {
+    it('increment package version', function() {
         monitoring.actionOnItem('Edit', 2, 0);
         monitoring.actionOnItemSubmenu('Add to current', 'main', 1, 0);
         authoring.save();
