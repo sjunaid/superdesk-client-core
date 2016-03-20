@@ -22,11 +22,9 @@ describe('package', function() {
         expect(element.all(by.repeater('version in versions')).count()).toBe(2);
     });
 
-    xit('reorder item on package', function() {
+    it('reorder item on package', function() {
         monitoring.actionOnItem('Edit', 2, 0);
-        browser.sleep(2000);
         monitoring.actionOnItemSubmenu('Add to current', 'main', 1, 0);
-        browser.sleep(2000);
         monitoring.actionOnItemSubmenu('Add to current', 'story', 2, 1);
         authoring.moveToGroup('MAIN', 0, 'STORY', 0);
         expect(authoring.getGroupItems('MAIN').count()).toBe(0);
@@ -51,7 +49,7 @@ describe('package', function() {
         //There is no preview in preview, SD-3319
     });
 
-    xit('create package from multiple items', function() {
+    it('create package from multiple items', function() {
         monitoring.selectItem(1, 0);
         monitoring.selectItem(1, 1);
         monitoring.createPackageFromItems();
@@ -69,7 +67,7 @@ describe('package', function() {
         expect(authoring.getGroupItems('STORY').count()).toBe(0);
     });
 
-    xit('create package from published item', function() {
+    it('create package from published item', function() {
         expect(monitoring.getTextItem(1, 0)).toBe('item5');
         monitoring.actionOnItem('Edit', 1, 0);
         authoring.writeText('some text');
@@ -84,7 +82,7 @@ describe('package', function() {
         expect(authoring.getGroupItems('MAIN').count()).toBe(1);
     });
 
-    xit('create package by combining an item with open item', function() {
+    it('create package by combining an item with open item', function() {
         monitoring.openMonitoring();
         monitoring.openAction(1, 0);
         browser.sleep(500);
