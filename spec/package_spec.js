@@ -8,8 +8,7 @@ describe('package', function() {
 
     beforeEach(function() {
         desks.openDesksSettings();
-        desks.showMonitoringSettings('POLITIC DESK');
-        monitoring.turnOffDeskWorkingStage();
+        desks.turnOffDeskWorkingStage();
         monitoring.openMonitoring();
         browser.sleep(7500);
     });

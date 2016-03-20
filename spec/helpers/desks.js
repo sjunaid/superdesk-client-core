@@ -95,6 +95,22 @@ function Desks() {
         });
     };
 
+    this.turnOffDeskWorkingStage = function(deskIndex, canCloseSettingsModal) {
+        this.showMonitoringSettings('POLITIC DESK');
+        this.toggleStage(deskIndex, 0);
+
+        if (typeof canCloseSettingsModal !== 'boolean') {
+            canCloseSettingsModal = true;
+        }
+
+        if (canCloseSettingsModal) {
+            this.nextStages();
+            this.nextSearches();
+            this.nextReorder();
+            this.saveSettings();
+        }
+    };
+
     /**
      * Remove named desk from desks settings list
      * @param {string} name of desk
