@@ -70,6 +70,7 @@ function Monitoring() {
         var all = this.getGroupItems(group);
 
         browser.wait(function() {
+            console.log('.....count......', all.count());
             return all.count();
         }, 7500);
 
