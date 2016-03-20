@@ -68,9 +68,7 @@ function Monitoring() {
      */
     this.getItem = function(group, item) {
         var all = this.getGroupItems(group);
-
-        browser.wait(function() {
-            console.log('.....count......', all.count());
+        browser.driver.wait(function() {
             return all.count();
         }, 7500);
 
