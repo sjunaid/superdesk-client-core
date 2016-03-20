@@ -3,20 +3,19 @@
 
 var authoring = require('./helpers/authoring'),
     monitoring = require('./helpers/monitoring'),
-    workspace = require('./helpers/workspace'),
     desks = require('./helpers/desks');
 
 var Login = require('./helpers/pages').login;
 var logout = require('./helpers/pages').logout;
 
-xdescribe('notifications', function() {
+describe('notifications', function() {
 
     beforeEach(function() {
         desks.openDesksSettings();
         desks.showMonitoringSettings('POLITIC DESK');
         monitoring.turnOffDeskWorkingStage(0);
         monitoring.openMonitoring();
-        expect(workspace.getCurrentDesk()).toEqual('POLITIC DESK');
+        browser.sleep(7500);
     });
 
     it('create a new user mention', function() {
