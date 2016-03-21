@@ -14,7 +14,7 @@ describe('notifications', function() {
         desks.openDesksSettings();
         desks.showMonitoringSettings('POLITIC DESK');
         monitoring.turnOffDeskWorkingStage(0);
-        browser.sleep(2000);
+        expect(element(by.id('unread-count')).getText()).toBe('2');
         monitoring.openMonitoring();
         browser.sleep(7500);
     });
@@ -29,10 +29,9 @@ describe('notifications', function() {
 
         browser.wait(function() {
             return comments.count();
-        }, 1000);
+        }, 2000);
 
         expect(comments.count()).toBe(1);
-        expect(element(by.id('unread-count')).getText()).toBe('2');
 
         logout();
         var modal = new Login();

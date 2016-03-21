@@ -3,14 +3,13 @@ var search = require('./helpers/search'),
     monitoring = require('./helpers/monitoring'),
     desks = require('./helpers/desks');
 
-xdescribe('package', function() {
+describe('package', function() {
     'use strict';
 
     beforeEach(function() {
         desks.openDesksSettings();
         desks.showMonitoringSettings('POLITIC DESK');
         monitoring.turnOffDeskWorkingStage();
-        browser.sleep(2000);
         monitoring.openMonitoring();
         browser.sleep(7500);
     });
