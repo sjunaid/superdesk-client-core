@@ -243,7 +243,7 @@ describe('authoring', function() {
     });
 
     it('related item widget can open published item', function() {
-        expect(monitoring.getGroups().count()).toBe(6);
+        expect(monitoring.getGroups().count()).toBe(7);
         expect(monitoring.getTextItem(2, 1)).toBe('item9');
         expect(monitoring.getTextItemBySlugline(2, 1)).toBe('ITEM9 SLUGLINE');
         monitoring.actionOnItem('Edit', 2, 1);
