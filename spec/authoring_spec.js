@@ -212,7 +212,7 @@ describe('authoring', function() {
         monitoring.showHideList();
 
         authoring.publish();
-        expect(monitoring.getGroups().count()).toBe(6);
+        expect(monitoring.getGroups().count()).toBe(7);
     });
 
     it('broadcast operation', function() {
@@ -257,8 +257,8 @@ describe('authoring', function() {
         monitoring.openMonitoring();
         browser.sleep(7500);
 
-        expect(monitoring.getGroupItems(6).count()).toBe(1);
-        monitoring.actionOnItem('Edit', 6, 0);
+        expect(monitoring.getGroupItems(7).count()).toBe(1);
+        monitoring.actionOnItem('Edit', 7, 0);
 
         authoring.openRelatedItem(); // opens related item widget
         expect(authoring.getRelatedItemBySlugline(0).getText()).toBe('item9 slugline');
