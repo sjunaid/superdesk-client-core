@@ -19,7 +19,7 @@ describe('authoring', function() {
         browser.sleep(7500);
     });
 
-    xit('authoring operations', function() {
+    it('authoring operations', function() {
         //undo and redo operations by using CTRL+Z and CTRL+y
         expect(monitoring.getTextItem(1, 0)).toBe('item5');
         monitoring.actionOnItem('Edit', 1, 0);
@@ -192,7 +192,7 @@ describe('authoring', function() {
         authoring.close();
     });
 
-    xit('keyboard shortcuts', function() {
+    it('keyboard shortcuts', function() {
         monitoring.actionOnItem('Edit', 1, 0);
         authoring.writeText('z');
         element(by.cssContainingText('span', 'Body')).click();
@@ -213,7 +213,7 @@ describe('authoring', function() {
         expect(element(by.className('authoring-embedded')).isDisplayed()).toBe(false);
     });
 
-    xit('can display monitoring after publishing an item using full view of authoring', function () {
+    it('can display monitoring after publishing an item using full view of authoring', function () {
         monitoring.actionOnItem('Edit', 2, 2);
         monitoring.showHideList();
 
@@ -221,7 +221,7 @@ describe('authoring', function() {
         expect(monitoring.getGroups().count()).toBe(6);
     });
 
-    xit('broadcast operation', function() {
+    it('broadcast operation', function() {
         expect(monitoring.getTextItem(1, 0)).toBe('item5');
         monitoring.actionOnItem('Edit', 1, 0);
         authoring.publish();
@@ -230,7 +230,7 @@ describe('authoring', function() {
         expect(authoring.getHeaderSluglineText()).toContain('item5');
     });
 
-    xit('toggle auto spellcheck and hold changes', function() {
+    it('toggle auto spellcheck and hold changes', function() {
         monitoring.actionOnItem('Edit', 1, 1);
         expect(element(by.model('spellcheckMenu.isAuto')).getAttribute('checked')).toBeTruthy();
         authoring.toggleAutoSpellCheck();
@@ -240,7 +240,7 @@ describe('authoring', function() {
         expect(element(by.model('spellcheckMenu.isAuto')).getAttribute('checked')).toBeFalsy();
     });
 
-    xit('related item widget', function() {
+    it('related item widget', function() {
         monitoring.actionOnItem('Edit', 1, 1);
         authoring.openRelatedItem();
         expect(authoring.getRelatedItems().count()).toBe(8);
@@ -289,7 +289,7 @@ describe('authoring', function() {
         expect(authoring.kill_button.isDisplayed()).toBe(true);
     });
 
-    xit('Emptied body text fails to validate', function() {
+    it('Emptied body text fails to validate', function() {
         expect(monitoring.getTextItem(1, 0)).toBe('item5');
         monitoring.actionOnItem('Edit', 1, 0);
         authoring.writeText('');
@@ -330,7 +330,7 @@ describe('authoring', function() {
         expect(browser.driver.switchTo().activeElement().getText()).toEqual('crime, law and justice');
     });
 
-    xit('disable multi-edit option when action is kill', function() {
+    it('disable multi-edit option when action is kill', function() {
         expect(monitoring.getTextItem(1, 0)).toBe('item5');
         monitoring.actionOnItem('Edit', 1, 0);
         authoring.publish();
@@ -339,7 +339,7 @@ describe('authoring', function() {
         expect(authoring.multieditButton.isEnabled()).toBe(false);
     });
 
-    xit('open publish item with footer text without <br> tag', function() {
+    it('open publish item with footer text without <br> tag', function() {
         expect(monitoring.getTextItem(1, 0)).toBe('item5');
         monitoring.actionOnItem('Edit', 1, 0);
         authoring.addHelpline('Suicide');
@@ -352,7 +352,7 @@ describe('authoring', function() {
         expect(authoring.getBodyFooterPreview()).not.toContain('<br>');
     });
 
-    xit('maintains helpline first option always selected', function() {
+    it('maintains helpline first option always selected', function() {
         expect(monitoring.getTextItem(1, 0)).toBe('item5');
         monitoring.actionOnItem('Edit', 1, 0);
         authoring.addHelpline('Suicide');
@@ -367,7 +367,7 @@ describe('authoring', function() {
         expect(authoring.getHelplineSelectedOption(2)).toBe(null);      // Children not remained selected
     });
 
-    xit('Not be able to Ctrl-z to the original, actionable text when killing an item', function() {
+    it('Not be able to Ctrl-z to the original, actionable text when killing an item', function() {
         expect(monitoring.getTextItem(1, 0)).toBe('item5');
         monitoring.actionOnItem('Edit', 1, 0);
         expect(authoring.getHeadlineText()).toBe('item5');  // original, actionable headline text
