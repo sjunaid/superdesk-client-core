@@ -8,21 +8,15 @@ var authoring = require('./helpers/authoring'),
 var Login = require('./helpers/pages').login;
 var logout = require('./helpers/pages').logout;
 
-xdescribe('notifications', function() {
+describe('notifications', function() {
 
     beforeEach(function() {
-        desks.openDesksSettings();
-        desks.showMonitoringSettings('POLITIC DESK');
-        monitoring.turnOffDeskWorkingStage(0);
-        browser.sleep(2000);
-        expect(element(by.id('unread-count')).getText()).toBe('2');
         monitoring.openMonitoring();
-        browser.sleep(7500);
     });
 
     it('create a new user mention', function() {
-        expect(monitoring.getTextItem(1, 0)).toBe('item5');
-        monitoring.actionOnItem('Edit', 1, 0);
+        expect(monitoring.getTextItem(2, 0)).toBe('item5');
+        monitoring.actionOnItem('Edit', 2, 0);
         authoring.showComments();
         authoring.writeTextToComment('@admin1 hello');
 
@@ -33,6 +27,7 @@ xdescribe('notifications', function() {
         }, 2000);
 
         expect(comments.count()).toBe(1);
+        expect(element(by.id('unread-count')).getText()).toBe('2');
 
         logout();
         var modal = new Login();
@@ -45,7 +40,7 @@ xdescribe('notifications', function() {
     });
 
     it('create a new desk mention', function() {
-        expect(monitoring.getTextItem(1, 0)).toBe('item5');
+        expect(monitoring.getTextItem(2, 0)).toBe('item5');
 
         desks.openDesksSettings();
         desks.showMonitoringSettings('POLITIC DESK');
