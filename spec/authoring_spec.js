@@ -5,18 +5,18 @@ var monitoring = require('./helpers/monitoring'),
     ctrlKey = require('./helpers/utils').ctrlKey,
     ctrlShiftKey = require('./helpers/utils').ctrlShiftKey,
     assertToastMsg = require('./helpers/utils').assertToastMsg,
-    workspace = require('./helpers/workspace'),
     desks = require('./helpers/desks');
 
-xdescribe('authoring', function() {
+describe('authoring', function() {
 
     beforeEach(function() {
         // Opens desk settings, configure monitoring settings and returns to monitoring view
         desks.openDesksSettings();
         desks.showMonitoringSettings('POLITIC DESK');
         monitoring.turnOffDeskWorkingStage(0);
+        browser.sleep(2000);
         monitoring.openMonitoring();
-        expect(workspace.getCurrentDesk()).toEqual('POLITIC DESK');
+        browser.sleep(7500);
     });
 
     it('authoring operations', function() {
