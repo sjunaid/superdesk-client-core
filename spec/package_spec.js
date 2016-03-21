@@ -3,7 +3,7 @@ var search = require('./helpers/search'),
     monitoring = require('./helpers/monitoring'),
     desks = require('./helpers/desks');
 
-describe('package', function() {
+xdescribe('package', function() {
     'use strict';
 
     beforeEach(function() {
