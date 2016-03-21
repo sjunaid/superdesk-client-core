@@ -2,7 +2,7 @@ var search = require('./helpers/search'),
     authoring = require('./helpers/pages').authoring,
     monitoring = require('./helpers/monitoring');
 
-describe('package', function() {
+xdescribe('package', function() {
     'use strict';
 
     beforeEach(function() {

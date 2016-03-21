@@ -250,12 +250,6 @@ describe('authoring', function() {
         authoring.publish(); // item9 published
 
         monitoring.actionOnItem('Duplicate', 5, {type: 'text'}); // duplicate item9 text published item
-        desks.openDesksSettings();
-        browser.sleep(5000);
-        desks.showMonitoringSettings('POLITIC DESK');
-        monitoring.turnOffDeskWorkingStage(0);
-        monitoring.openMonitoring();
-        browser.sleep(7500);
 
         expect(monitoring.getGroupItems(7).count()).toBe(1);
         monitoring.actionOnItem('Edit', 7, 0);
