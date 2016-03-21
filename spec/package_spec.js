@@ -10,6 +10,7 @@ describe('package', function() {
         desks.openDesksSettings();
         desks.showMonitoringSettings('POLITIC DESK');
         monitoring.turnOffDeskWorkingStage();
+        browser.sleep(2000);
         monitoring.openMonitoring();
         browser.sleep(7500);
     });

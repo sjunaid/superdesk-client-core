@@ -14,6 +14,7 @@ describe('notifications', function() {
         desks.openDesksSettings();
         desks.showMonitoringSettings('POLITIC DESK');
         monitoring.turnOffDeskWorkingStage(0);
+        browser.sleep(2000);
         expect(element(by.id('unread-count')).getText()).toBe('2');
         monitoring.openMonitoring();
         browser.sleep(7500);
