@@ -90,7 +90,6 @@ describe('monitoring', function() {
         monitoring.saveSettings();
 
         monitoring.openMonitoring();
-        browser.sleep(5000);
 
         expect(monitoring.getTextItem(0, 0)).toBe('ingest1');
     });
@@ -110,7 +109,7 @@ describe('monitoring', function() {
         monitoring.saveSettings();
 
         monitoring.openMonitoring();
-        browser.sleep(7500);
+        browser.sleep(9000);
 
         expect(monitoring.getTextItem(0, 2)).toBe('item6');
         expect(monitoring.getTextItem(1, 0)).toBe('ingest1');
