@@ -6,7 +6,7 @@ var authoring = require('./helpers/authoring'),
     dashboard = require('./helpers/dashboard'),
     desks = require('./helpers/desks');
 
-xdescribe('monitoring', function() {
+describe('monitoring', function() {
 
     beforeEach(function() {
         monitoring.openMonitoring();
@@ -115,6 +115,7 @@ xdescribe('monitoring', function() {
         monitoring.saveSettings();
 
         monitoring.openMonitoring();
+        browser.sleep(5000);
 
         expect(monitoring.getTextItem(0, 2)).toBe('item6');
         expect(monitoring.getTextItem(1, 0)).toBe('ingest1');
@@ -167,11 +168,13 @@ xdescribe('monitoring', function() {
         monitoring.saveSettings();
 
         monitoring.openMonitoring();
+        browser.sleep(5000);
 
         expect(monitoring.getTextItem(0, 0)).toBe('ingest1');
         expect(monitoring.getTextItem(1, 2)).toBe('item6');
 
         desks.openDesksSettings();
+        browser.sleep(3000);
         desks.showMonitoringSettings('POLITIC DESK');
         monitoring.nextStages();
         monitoring.nextSearches();
@@ -200,6 +203,7 @@ xdescribe('monitoring', function() {
         monitoring.saveSettings();
 
         monitoring.openMonitoring();
+        browser.sleep(5000);
 
         expect(monitoring.getTextItem(0, 0)).toBe('item1');
         expect(monitoring.getTextItem(1, 2)).toBe('item6');
@@ -217,6 +221,7 @@ xdescribe('monitoring', function() {
         monitoring.saveSettings();
 
         monitoring.openMonitoring();
+        browser.sleep(5000);
 
         expect(monitoring.getTextItem(0, 0)).toBe('ingest1');
     });
@@ -232,6 +237,7 @@ xdescribe('monitoring', function() {
         monitoring.saveSettings();
 
         monitoring.openMonitoring();
+        browser.sleep(5000);
 
         expect(monitoring.getTextItem(0, 0)).toBe('item5');
         expect(monitoring.getTextItem(0, 1)).toBe('item9');
@@ -282,6 +288,7 @@ xdescribe('monitoring', function() {
         monitoring.saveSettings();
 
         monitoring.openMonitoring();
+        browser.sleep(5000);
 
         expect(workspace.getCurrentDesk()).toEqual('POLITIC DESK');
         expect(monitoring.getTextItem(0, 2)).toBe('item6');
@@ -302,6 +309,8 @@ xdescribe('monitoring', function() {
         desks.save();
 
         monitoring.openMonitoring();
+        browser.sleep(5000);
+
         expect(monitoring.getGroups().count()).toBe(6);
     });
 
@@ -318,6 +327,7 @@ xdescribe('monitoring', function() {
         monitoring.saveSettings();
 
         monitoring.openMonitoring();
+        browser.sleep(5000);
 
         expect(monitoring.getTextItem(0, 0)).toBe('item3');
         expect(monitoring.getTextItem(1, 0)).toBe('item4');
@@ -333,6 +343,7 @@ xdescribe('monitoring', function() {
         monitoring.turnOffDeskWorkingStage(1);
 
         monitoring.openMonitoring();
+        browser.sleep(5000);
 
         expect(workspace.getCurrentDesk()).toEqual('SPORTS DESK');
         expect(monitoring.getTextItem(1, 0)).toBe('item3');
@@ -355,6 +366,7 @@ xdescribe('monitoring', function() {
         monitoring.saveSettings();
 
         monitoring.openMonitoring();
+        browser.sleep(5000);
 
         expect(monitoring.getTextItem(2, 0)).toBe('item5');
         expect(monitoring.getTextItem(2, 1)).toBe('item9');
@@ -374,6 +386,7 @@ xdescribe('monitoring', function() {
         monitoring.turnOffDeskWorkingStage(0);
 
         monitoring.openMonitoring();
+        browser.sleep(5000);
 
         expect(monitoring.getTextItem(1, 0)).toBe('item5');
         expect(monitoring.getTextItem(1, 1)).toBe('item9');
@@ -391,6 +404,7 @@ xdescribe('monitoring', function() {
         monitoring.turnOffDeskWorkingStage(0);
 
         monitoring.openMonitoring();
+        browser.sleep(5000);
 
         monitoring.previewAction(2, 2);
         expect(monitoring.getPreviewTitle()).toBe('item6');
@@ -402,6 +416,7 @@ xdescribe('monitoring', function() {
         monitoring.turnOffDeskWorkingStage(0);
 
         monitoring.openMonitoring();
+        browser.sleep(5000);
 
         monitoring.openAction(2, 0);
         expect(authoring.save_button.isPresent()).toBeTruthy();
@@ -437,6 +452,7 @@ xdescribe('monitoring', function() {
         monitoring.turnOffDeskWorkingStage(0);
 
         monitoring.openMonitoring();
+        browser.sleep(5000);
 
         expect(monitoring.getGroupItems(1).count()).toBe(4);
 
@@ -460,6 +476,7 @@ xdescribe('monitoring', function() {
         monitoring.saveSettings();
 
         monitoring.openMonitoring();
+        browser.sleep(5000);
 
         expect(monitoring.getGroupItems(0).count()).toBe(2);
         monitoring.actionOnItem('Spike', 0, 0);
@@ -471,6 +488,7 @@ xdescribe('monitoring', function() {
         monitoring.turnOffDeskWorkingStage(0);
 
         monitoring.openMonitoring();
+        browser.sleep(5000);
 
         expect(monitoring.getGroupItems(1).count()).toBe(4);
         monitoring.selectItem(1, 2);
@@ -505,6 +523,7 @@ xdescribe('monitoring', function() {
         monitoring.saveSettings();
 
         monitoring.openMonitoring();
+        browser.sleep(5000);
 
         monitoring.openAction(0, 3); // creates new item
         expect(monitoring.getTextItem(0, 3)).toBe('ingest1');
@@ -522,6 +541,7 @@ xdescribe('monitoring', function() {
         monitoring.saveSettings();
 
         monitoring.openMonitoring();
+        browser.sleep(5000);
 
         monitoring.openFetchAsOptions(0, 3);
 
@@ -542,6 +562,7 @@ xdescribe('monitoring', function() {
         monitoring.saveSettings();
 
         monitoring.openMonitoring();
+        browser.sleep(5000);
 
         expect(monitoring.getTextItem(0, 0)).toBe('ingest1');
     });
@@ -556,6 +577,7 @@ xdescribe('monitoring', function() {
         monitoring.saveSettings();
 
         monitoring.openMonitoring();
+        browser.sleep(5000);
 
         monitoring.fetchAndOpen(0, 3);
 
@@ -572,6 +594,7 @@ xdescribe('monitoring', function() {
         monitoring.saveSettings();
 
         monitoring.openMonitoring();
+        browser.sleep(5000);
 
         expect(monitoring.getGroups().count()).toBe(5);
 
@@ -619,6 +642,7 @@ xdescribe('monitoring', function() {
         monitoring.saveSettings();
 
         monitoring.openMonitoring();
+        browser.sleep(5000);
 
         expect(monitoring.getGroupItems(0).count()).toBe(9);
 
@@ -672,6 +696,7 @@ xdescribe('monitoring', function() {
         monitoring.turnOffDeskWorkingStage(0);
 
         monitoring.openMonitoring();
+        browser.sleep(5000);
 
         monitoring.actionOnItem('Edit', 1, 0);
         authoring.publish();
@@ -699,6 +724,7 @@ xdescribe('monitoring', function() {
         monitoring.turnOffDeskWorkingStage(0);
 
         monitoring.openMonitoring();
+        browser.sleep(5000);
 
         monitoring.previewAction(2, 2);
         expect(monitoring.getPreviewTitle()).toBe('item6');
@@ -713,6 +739,7 @@ xdescribe('monitoring', function() {
         monitoring.turnOffDeskWorkingStage(0);
 
         monitoring.openMonitoring();
+        browser.sleep(5000);
 
         monitoring.actionOnItem('Edit', 1, 0);
         authoring.sendToButton.click();

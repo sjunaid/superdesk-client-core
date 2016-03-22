@@ -250,10 +250,11 @@ describe('authoring', function() {
         authoring.publish(); // item9 published
 
         monitoring.filterAction('text');
-        monitoring.actionOnItem('Duplicate', 5, {type: 'text'}); // duplicate item9 text published item
-        browser.sleep(1000);
-        expect(monitoring.getGroupItems(5).count()).toBe(1);
-        monitoring.actionOnItem('Edit', 5, 0);
+        browser.sleep(200);
+        monitoring.actionOnItem('Duplicate', 5, 0); // duplicate item9 text published item
+        browser.sleep(500);
+        expect(monitoring.getGroupItems(0).count()).toBe(1);
+        monitoring.actionOnItem('Edit', 0, 0);
 
         authoring.openRelatedItem(); // opens related item widget
         expect(authoring.getRelatedItemBySlugline(0).getText()).toBe('item9 slugline');

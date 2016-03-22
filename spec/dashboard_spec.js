@@ -6,7 +6,7 @@ var dashboard = require('./helpers/dashboard'),
     authoring = require('./helpers/authoring'),
     monitoring = require('./helpers/monitoring');
 
-describe('dashboard', function() {
+xdescribe('dashboard', function() {
 
     beforeEach(function() {
         dashboard.openDashboard();
