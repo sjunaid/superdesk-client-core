@@ -33,7 +33,7 @@ describe('monitoring', function() {
         monitoring.saveSettings();
 
         monitoring.openMonitoring();
-        browser.sleep(7500);
+        browser.sleep(5000);
         expect(monitoring.getTextItem(0, 2)).toBe('item6');
     });
 
@@ -85,7 +85,7 @@ describe('monitoring', function() {
         expect(monitoring.getTextItem(0, 1)).toBe('item2');
     });
 
-    xit('configure a saved search and show it on monitoring view', function() {
+    it('configure a saved search and show it on monitoring view', function() {
         setupDeskMonitoringSettings('POLITIC DESK');
         monitoring.toggleDesk(0);
         monitoring.nextStages();
@@ -100,7 +100,7 @@ describe('monitoring', function() {
         expect(monitoring.getTextItem(0, 0)).toBe('ingest1');
     });
 
-    xit('configure a stage and a saved search and show them on monitoring view', function() {
+    it('configure a stage and a saved search and show them on monitoring view', function() {
         setupDeskMonitoringSettings('POLITIC DESK');
         monitoring.toggleStage(0, 0);
         monitoring.toggleStage(0, 1);
@@ -115,7 +115,7 @@ describe('monitoring', function() {
         monitoring.saveSettings();
 
         monitoring.openMonitoring();
-        browser.sleep(5000);
+        browser.sleep(7500);
 
         expect(monitoring.getTextItem(0, 2)).toBe('item6');
         expect(monitoring.getTextItem(1, 0)).toBe('ingest1');
