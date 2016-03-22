@@ -97,10 +97,12 @@ xdescribe('highlights', function() {
             // Setup Desk Monitoring Settings
             expect(workspace.getCurrentDesk()).toEqual('POLITIC DESK');
             desks.openDesksSettings();
+            browser.sleep(2000);
             desks.showMonitoringSettings('POLITIC DESK');
             monitoring.turnOffDeskWorkingStage(0);
 
             monitoring.openMonitoring();
+            browser.sleep(2000);
 
             //mark for highlight in monitoring
             monitoring.actionOnItemSubmenu('Mark for highlight', 'Highlight two', 1, 0);
