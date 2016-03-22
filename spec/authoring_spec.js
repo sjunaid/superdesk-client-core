@@ -7,7 +7,7 @@ var monitoring = require('./helpers/monitoring'),
     assertToastMsg = require('./helpers/utils').assertToastMsg,
     desks = require('./helpers/desks');
 
-describe('authoring', function() {
+xdescribe('authoring', function() {
 
     beforeEach(function() {
         monitoring.openMonitoring();
