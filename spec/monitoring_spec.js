@@ -11,11 +11,11 @@ describe('monitoring', function() {
     // Opens desk settings and configure monitoring settings for the named desk
     function setupDeskMonitoringSettings(name) {
         desks.openDesksSettings();
-        browser.sleep(5000);
+        browser.sleep(3000);
         desks.showMonitoringSettings(name.toUpperCase());
     }
 
-    xit('configure a stage and show it on monitoring view', function() {
+    it('configure a stage and show it on monitoring view', function() {
         setupDeskMonitoringSettings('POLITIC DESK');
         monitoring.turnOffDeskWorkingStage(0, false);
 
@@ -28,11 +28,11 @@ describe('monitoring', function() {
         monitoring.saveSettings();
 
         monitoring.openMonitoring();
-        browser.sleep(5000);
         expect(monitoring.getTextItem(0, 2)).toBe('item6');
     });
 
     xit('can configure desk output as default when user switches desks and show it on monitoring view', function() {
+        monitoring.openMonitoring();
         expect(monitoring.getGroups().count()).toBe(7);
 
         workspace.selectDesk('Sports Desk');
@@ -40,6 +40,7 @@ describe('monitoring', function() {
     });
 
     xit('can display the item in Desk Output when it\'s been submitted to a production desk', function () {
+        monitoring.openMonitoring();
         workspace.selectDesk('Sports Desk');
         monitoring.actionOnItem('Edit', 2, 0);
         authoring.sendTo('Politic Desk', 'two');
@@ -48,6 +49,7 @@ describe('monitoring', function() {
     });
 
     xit('can display the item in Desk Output when it\'s published in a production desk', function() {
+        monitoring.openMonitoring();
         expect(monitoring.getTextItem(3, 2)).toBe('item6');
         monitoring.actionOnItem('Edit', 3, 2);
         authoring.publish();
@@ -56,6 +58,7 @@ describe('monitoring', function() {
     });
 
     xit('can display the item in Desk Output and Scheduled Desk Output when it\'s scheduled for publish ', function() {
+        monitoring.openMonitoring();
         expect(monitoring.getTextItem(3, 2)).toBe('item6');
         monitoring.actionOnItem('Edit', 3, 2);
         authoring.schedule();
@@ -63,7 +66,7 @@ describe('monitoring', function() {
         expect(monitoring.getTextItem(6, 0)).toBe('item6');
     });
 
-    xit('configure personal and show it on monitoring view', function() {
+    it('configure personal and show it on monitoring view', function() {
         setupDeskMonitoringSettings('POLITIC DESK');
 
         monitoring.toggleDesk(0);
@@ -109,13 +112,12 @@ describe('monitoring', function() {
         monitoring.saveSettings();
 
         monitoring.openMonitoring();
-        browser.sleep(9000);
 
         expect(monitoring.getTextItem(0, 2)).toBe('item6');
-        expect(monitoring.getTextItem(1, 0)).toBe('ingest1');
+        expect(monitoring.getTextItem(2, 0)).toBe('ingest1');
     });
 
-    xit('configure a stage and a saved search then unselect stage and show search on monitoring view',
+    it('configure a stage and a saved search then unselect stage and show search on monitoring view',
     function() {
         setupDeskMonitoringSettings('POLITIC DESK');
         monitoring.turnOffDeskWorkingStage(0, false);
@@ -139,9 +141,8 @@ describe('monitoring', function() {
         monitoring.saveSettings();
 
         monitoring.openMonitoring();
-        browser.sleep(5000);
 
-        expect(monitoring.getTextItem(0, 0)).toBe('ingest1');
+        expect(monitoring.getTextItem(1, 0)).toBe('ingest1');
     });
 
     xit('configure stage and search and then reorder', function() {
