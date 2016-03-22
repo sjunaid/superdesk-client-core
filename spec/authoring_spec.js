@@ -249,6 +249,7 @@ describe('authoring', function() {
         monitoring.actionOnItem('Edit', 2, 1);
         authoring.publish(); // item9 published
 
+        monitoring.filterAction('text');
         monitoring.actionOnItem('Duplicate', 5, {type: 'text'}); // duplicate item9 text published item
         browser.sleep(1000);
         expect(monitoring.getGroupItems(5).count()).toBe(1);

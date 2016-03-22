@@ -4,7 +4,7 @@ var monitoring = require('./helpers/monitoring'),
     authoring = require('./helpers/authoring'),
     publishQueue = require('./helpers/publish_queue');
 
-describe('publishing', function() {
+xdescribe('publishing', function() {
     beforeEach(function() {
         monitoring.openMonitoring();
 

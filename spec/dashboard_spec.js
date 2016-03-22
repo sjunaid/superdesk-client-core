@@ -92,7 +92,7 @@ describe('dashboard', function() {
         dashboard.addWidget(1);  // the monitoring widget
         dashboard.doneAction();
 
-        expect(dashboard.getTextItem(0, 6, 1)).toBe('item6');
+        expect(dashboard.getTextItem(0, 5, 1)).toBe('item6');
     });
 
     it('can display \'not for publication\' state in monitoring widget for such item', function() {
