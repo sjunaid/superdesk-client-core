@@ -16,6 +16,7 @@ xdescribe('monitoring', function() {
     function setupDeskMonitoringSettings(name) {
         expect(workspace.getCurrentDesk()).toEqual(name.toUpperCase());
         desks.openDesksSettings();
+        browser.sleep(3000);
         desks.showMonitoringSettings(name.toUpperCase());
     }
 
@@ -32,6 +33,7 @@ xdescribe('monitoring', function() {
         monitoring.saveSettings();
 
         monitoring.openMonitoring();
+        browser.sleep(5000);
         expect(monitoring.getTextItem(0, 2)).toBe('item6');
     });
 
@@ -77,6 +79,7 @@ xdescribe('monitoring', function() {
         monitoring.saveSettings();
 
         monitoring.openMonitoring();
+        browser.sleep(5000);
 
         expect(monitoring.getTextItem(0, 0)).toBe('item1');
         expect(monitoring.getTextItem(0, 1)).toBe('item2');
@@ -92,6 +95,7 @@ xdescribe('monitoring', function() {
         monitoring.saveSettings();
 
         monitoring.openMonitoring();
+        browser.sleep(5000);
 
         expect(monitoring.getTextItem(0, 0)).toBe('ingest1');
     });
@@ -140,6 +144,7 @@ xdescribe('monitoring', function() {
         monitoring.saveSettings();
 
         monitoring.openMonitoring();
+        browser.sleep(5000);
 
         expect(monitoring.getTextItem(0, 0)).toBe('ingest1');
     });

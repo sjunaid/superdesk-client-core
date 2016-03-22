@@ -4,8 +4,7 @@
 var dashboard = require('./helpers/dashboard'),
     workspace = require('./helpers/workspace'),
     authoring = require('./helpers/authoring'),
-    monitoring = require('./helpers/monitoring'),
-    desks = require('./helpers/desks');
+    monitoring = require('./helpers/monitoring');
 
 describe('dashboard', function() {
 
@@ -80,16 +79,11 @@ describe('dashboard', function() {
     });
 
     it('can display desk output in monitoring widget when an item gets published', function() {
-        desks.openDesksSettings();
-        browser.sleep(2000);
-        desks.showMonitoringSettings('POLITIC DESK');
-        monitoring.turnOffDeskWorkingStage(0);
-
         monitoring.openMonitoring();
         browser.sleep(2000);
 
-        expect(monitoring.getTextItem(2, 2)).toBe('item6');
-        monitoring.actionOnItem('Edit', 2, 2);
+        expect(monitoring.getTextItem(3, 2)).toBe('item6');
+        monitoring.actionOnItem('Edit', 3, 2);
         authoring.publish();
         browser.sleep(300);
 
@@ -98,21 +92,16 @@ describe('dashboard', function() {
         dashboard.addWidget(1);  // the monitoring widget
         dashboard.doneAction();
 
-        expect(dashboard.getTextItem(0, 5, 1)).toBe('item6');
+        expect(dashboard.getTextItem(0, 6, 1)).toBe('item6');
     });
 
     it('can display \'not for publication\' state in monitoring widget for such item', function() {
-        desks.openDesksSettings();
-        browser.sleep(2000);
-        desks.showMonitoringSettings('POLITIC DESK');
-        monitoring.turnOffDeskWorkingStage(0);
-
         monitoring.openMonitoring();
         browser.sleep(2000);
 
-        expect(monitoring.getTextItem(2, 2)).toBe('item6');
+        expect(monitoring.getTextItem(3, 2)).toBe('item6');
 
-        monitoring.actionOnItem('Edit', 2, 2);
+        monitoring.actionOnItem('Edit', 3, 2);
         authoring.showInfo();
         authoring.toggleNotForPublication();
         authoring.save();
@@ -122,7 +111,7 @@ describe('dashboard', function() {
         dashboard.showDashboardSettings();
         dashboard.addWidget(1);  // the monitoring widget
         dashboard.doneAction();
-
+        browser.sleep(1000);
         expect(dashboard.getTextItem(0, 3, 0)).toBe('item6');
 
         dashboard.getItem(0, 3, 0).click(); // click item to preview
