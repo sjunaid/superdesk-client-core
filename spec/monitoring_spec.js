@@ -28,7 +28,7 @@ describe('monitoring', function() {
         monitoring.saveSettings();
 
         monitoring.openMonitoring();
-        browser.sleep(3000);
+        browser.sleep(7500);
 
         expect(monitoring.getTextItem(0, 2)).toBe('item6');
     });
@@ -79,7 +79,7 @@ describe('monitoring', function() {
         monitoring.saveSettings();
 
         monitoring.openMonitoring();
-        browser.sleep(3000);
+        browser.sleep(7500);
 
         expect(monitoring.getTextItem(0, 0)).toBe('item1');
         expect(monitoring.getTextItem(0, 1)).toBe('item2');
@@ -95,7 +95,7 @@ describe('monitoring', function() {
         monitoring.saveSettings();
 
         monitoring.openMonitoring();
-        browser.sleep(3000);
+        browser.sleep(7500);
 
         expect(monitoring.getTextItem(0, 0)).toBe('ingest1');
     });
@@ -115,7 +115,7 @@ describe('monitoring', function() {
         monitoring.saveSettings();
 
         monitoring.openMonitoring();
-        browser.sleep(3000);
+        browser.sleep(7500);
 
         expect(monitoring.getTextItem(0, 2)).toBe('item6');
         expect(monitoring.getTextItem(2, 0)).toBe('ingest1');
@@ -145,7 +145,7 @@ describe('monitoring', function() {
         monitoring.saveSettings();
 
         monitoring.openMonitoring();
-        browser.sleep(3000);
+        browser.sleep(7500);
 
         expect(monitoring.getTextItem(1, 0)).toBe('ingest1');
     });
@@ -168,7 +168,7 @@ describe('monitoring', function() {
         monitoring.saveSettings();
 
         monitoring.openMonitoring();
-        browser.sleep(5000);
+        browser.sleep(7500);
 
         expect(monitoring.getTextItem(0, 0)).toBe('ingest1');
         expect(monitoring.getTextItem(1, 2)).toBe('item6');
