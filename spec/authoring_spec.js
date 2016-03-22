@@ -252,7 +252,7 @@ describe('authoring', function() {
         monitoring.actionOnItem('Duplicate', 5, {type: 'text'}); // duplicate item9 text published item
 
         expect(monitoring.getGroupItems(7).count()).toBe(1);
-        monitoring.actionOnItem('Edit', 7, 0);
+        monitoring.actionOnItem('Edit', 6, 0);
 
         authoring.openRelatedItem(); // opens related item widget
         expect(authoring.getRelatedItemBySlugline(0).getText()).toBe('item9 slugline');
