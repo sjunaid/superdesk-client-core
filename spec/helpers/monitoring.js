@@ -341,7 +341,14 @@ function Monitoring() {
     };
 
     this.saveSettings = function() {
-        element(by.css('[ng-click="save()"]')).click();
+        var btn = element(by.css('[ng-click="save()"]'));
+        btn.click();
+        // wait for modal to be removed
+        browser.wait(function() {
+            return btn.isPresent().then(function(isPresent) {
+                return !isPresent;
+            });
+        }, 500);
     };
 
     /**
