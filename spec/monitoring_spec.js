@@ -182,7 +182,7 @@ describe('monitoring', function() {
         expect(monitoring.getOrderItemText(2)).toBe('global saved search ingest1');
     });
 
-    xit('configure a stage, a saved search and personal and then set max items', function() {
+    it('configure a stage, a saved search and personal and then set max items', function() {
         setupDeskMonitoringSettings('POLITIC DESK');
         monitoring.turnOffDeskWorkingStage(0, false);
 
@@ -405,14 +405,10 @@ describe('monitoring', function() {
         expect(monitoring.getTextItem(1, 3)).toBe('item9');
     });
 
-    xit('can preview content', function() {
-        setupDeskMonitoringSettings('POLITIC DESK');
-        monitoring.turnOffDeskWorkingStage(0);
-
+    it('can preview content', function() {
         monitoring.openMonitoring();
-        browser.sleep(7500);
 
-        monitoring.previewAction(2, 2);
+        monitoring.previewAction(3, 2);
         expect(monitoring.getPreviewTitle()).toBe('item6');
         monitoring.closePreview();
     });
@@ -475,7 +471,7 @@ describe('monitoring', function() {
         expect(monitoring.getSpikedItems().count()).toBe(0);
     });
 
-    xit('updates personal on single item spike', function() {
+    it('updates personal on single item spike', function() {
         setupDeskMonitoringSettings('POLITIC DESK');
         monitoring.toggleDesk(0);
         monitoring.togglePersonal();
@@ -631,7 +627,7 @@ describe('monitoring', function() {
         expect(monitoring.getStageSingleViewTitle()).toBe('Politic Desk / Working Stage stage 0');
     });
 
-    it('can remember multi selection even after scrolling and can reset multi-selection', function() {
+    xit('can remember multi selection even after scrolling and can reset multi-selection', function() {
         //Initial steps to setup global saved search group as a test group for this case
         setupDeskMonitoringSettings('POLITIC DESK');
         monitoring.turnOffDeskWorkingStage(0, false);
