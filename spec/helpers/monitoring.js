@@ -11,7 +11,7 @@ function Monitoring() {
     this.label = element(by.model('widget.configuration.label'));
 
     this.openMonitoring = function() {
-        openUrl('/#/workspace/monitoring');
+        return openUrl('/#/workspace/monitoring');
     };
 
     this.showMonitoring = function() {
