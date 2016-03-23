@@ -30,7 +30,7 @@ describe('monitoring', function() {
         monitoring.openMonitoring().then(function() {
             browser.wait(function() {
                 return browser.driver.isElementPresent(by.css('.content-list'));
-            }, 7500);
+            }, 8000);
         });
 
         expect(monitoring.getTextItem(0, 2)).toBe('item6');
@@ -120,7 +120,7 @@ describe('monitoring', function() {
         monitoring.openMonitoring().then(function() {
             browser.wait(function() {
                 return browser.driver.isElementPresent(by.css('.content-list'));
-            }, 7500);
+            }, 8000);
         });
 
         expect(monitoring.getTextItem(0, 2)).toBe('item6');
