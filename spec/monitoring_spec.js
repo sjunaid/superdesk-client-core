@@ -28,8 +28,8 @@ describe('monitoring', function() {
         monitoring.saveSettings();
 
         monitoring.openMonitoring();
-        browser.wait(function() {
-            return element.all(by.css('.content-list')).isPresent();
+        browser.driver.wait(function() {
+            return browser.driver.isElementPresent(by.css('.content-list'));
         });
         browser.sleep(1000);
 
@@ -83,7 +83,7 @@ describe('monitoring', function() {
 
         monitoring.openMonitoring();
         browser.wait(function() {
-            return element.all(by.css('.content-list')).isPresent();
+            return browser.driver.isElementPresent(by.css('.content-list'));
         });
         browser.sleep(1000);
 
@@ -102,7 +102,7 @@ describe('monitoring', function() {
 
         monitoring.openMonitoring();
         browser.wait(function() {
-            return element.all(by.css('.content-list')).isPresent();
+            return browser.driver.isElementPresent(by.css('.content-list'));
         });
         browser.sleep(1000);
 
@@ -125,7 +125,7 @@ describe('monitoring', function() {
 
         monitoring.openMonitoring();
         browser.wait(function() {
-            return element.all(by.css('.content-list')).isPresent();
+            return browser.driver.isElementPresent(by.css('.content-list'));
         });
         browser.sleep(1000);
 
@@ -158,7 +158,7 @@ describe('monitoring', function() {
 
         monitoring.openMonitoring();
         browser.wait(function() {
-            return element.all(by.css('.content-list')).isPresent();
+            return browser.driver.isElementPresent(by.css('.content-list'));
         });
         browser.sleep(1000);
 
@@ -183,7 +183,7 @@ describe('monitoring', function() {
 
         monitoring.openMonitoring();
         browser.wait(function() {
-            return element.all(by.css('.content-list')).isPresent();
+            return browser.driver.isElementPresent(by.css('.content-list'));
         });
         browser.sleep(1000);
 
@@ -223,7 +223,7 @@ describe('monitoring', function() {
 
         monitoring.openMonitoring();
         browser.wait(function() {
-            return element.all(by.css('.content-list')).isPresent();
+            return browser.driver.isElementPresent(by.css('.content-list'));
         });
         browser.sleep(1000);
 
@@ -244,7 +244,7 @@ describe('monitoring', function() {
 
         monitoring.openMonitoring();
         browser.wait(function() {
-            return element.all(by.css('.content-list')).isPresent();
+            return browser.driver.isElementPresent(by.css('.content-list'));
         });
         browser.sleep(1000);
 
@@ -263,7 +263,7 @@ describe('monitoring', function() {
 
         monitoring.openMonitoring();
         browser.wait(function() {
-            return element.all(by.css('.content-list')).isPresent();
+            return browser.driver.isElementPresent(by.css('.content-list'));
         });
         browser.sleep(1000);
 
@@ -319,7 +319,7 @@ describe('monitoring', function() {
 
         monitoring.openMonitoring();
         browser.wait(function() {
-            return element.all(by.css('.content-list')).isPresent();
+            return browser.driver.isElementPresent(by.css('.content-list'));
         });
         browser.sleep(1000);
 
@@ -345,7 +345,7 @@ describe('monitoring', function() {
 
         monitoring.openMonitoring();
         browser.wait(function() {
-            return element.all(by.css('.content-list')).isPresent();
+            return browser.driver.isElementPresent(by.css('.content-list'));
         });
         browser.sleep(1000);
 
@@ -366,7 +366,7 @@ describe('monitoring', function() {
 
         monitoring.openMonitoring();
         browser.wait(function() {
-            return element.all(by.css('.content-list')).isPresent();
+            return browser.driver.isElementPresent(by.css('.content-list'));
         });
         browser.sleep(1000);
 
@@ -385,7 +385,7 @@ describe('monitoring', function() {
 
         monitoring.openMonitoring();
         browser.wait(function() {
-            return element.all(by.css('.content-list')).isPresent();
+            return browser.driver.isElementPresent(by.css('.content-list'));
         });
         browser.sleep(1000);
 
@@ -411,7 +411,7 @@ describe('monitoring', function() {
 
         monitoring.openMonitoring();
         browser.wait(function() {
-            return element.all(by.css('.content-list')).isPresent();
+            return browser.driver.isElementPresent(by.css('.content-list'));
         });
         browser.sleep(1000);
 
@@ -434,7 +434,7 @@ describe('monitoring', function() {
 
         monitoring.openMonitoring();
         browser.wait(function() {
-            return element.all(by.css('.content-list')).isPresent();
+            return browser.driver.isElementPresent(by.css('.content-list'));
         });
         browser.sleep(1000);
 
@@ -463,7 +463,7 @@ describe('monitoring', function() {
 
         monitoring.openMonitoring();
         browser.wait(function() {
-            return element.all(by.css('.content-list')).isPresent();
+            return browser.driver.isElementPresent(by.css('.content-list'));
         });
         browser.sleep(1000);
 
@@ -505,7 +505,7 @@ describe('monitoring', function() {
 
         monitoring.openMonitoring();
         browser.wait(function() {
-            return element.all(by.css('.content-list')).isPresent();
+            return browser.driver.isElementPresent(by.css('.content-list'));
         });
         browser.sleep(1000);
 
@@ -532,7 +532,7 @@ describe('monitoring', function() {
 
         monitoring.openMonitoring();
         browser.wait(function() {
-            return element.all(by.css('.content-list')).isPresent();
+            return browser.driver.isElementPresent(by.css('.content-list'));
         });
         browser.sleep(1000);
 
@@ -547,7 +547,7 @@ describe('monitoring', function() {
 
         monitoring.openMonitoring();
         browser.wait(function() {
-            return element.all(by.css('.content-list')).isPresent();
+            return browser.driver.isElementPresent(by.css('.content-list'));
         });
         browser.sleep(1000);
 
@@ -586,7 +586,7 @@ describe('monitoring', function() {
 
         monitoring.openMonitoring();
         browser.wait(function() {
-            return element.all(by.css('.content-list')).isPresent();
+            return browser.driver.isElementPresent(by.css('.content-list'));
         });
         browser.sleep(1000);
 
@@ -607,7 +607,7 @@ describe('monitoring', function() {
 
         monitoring.openMonitoring();
         browser.wait(function() {
-            return element.all(by.css('.content-list')).isPresent();
+            return browser.driver.isElementPresent(by.css('.content-list'));
         });
         browser.sleep(1000);
 
@@ -631,7 +631,7 @@ describe('monitoring', function() {
 
         monitoring.openMonitoring();
         browser.wait(function() {
-            return element.all(by.css('.content-list')).isPresent();
+            return browser.driver.isElementPresent(by.css('.content-list'));
         });
         browser.sleep(1000);
 
@@ -649,7 +649,7 @@ describe('monitoring', function() {
 
         monitoring.openMonitoring();
         browser.wait(function() {
-            return element.all(by.css('.content-list')).isPresent();
+            return browser.driver.isElementPresent(by.css('.content-list'));
         });
         browser.sleep(1000);
 
@@ -670,7 +670,7 @@ describe('monitoring', function() {
 
         monitoring.openMonitoring();
         browser.wait(function() {
-            return element.all(by.css('.content-list')).isPresent();
+            return browser.driver.isElementPresent(by.css('.content-list'));
         });
         browser.sleep(1000);
 
@@ -720,7 +720,7 @@ describe('monitoring', function() {
 
         monitoring.openMonitoring();
         browser.wait(function() {
-            return element.all(by.css('.content-list')).isPresent();
+            return browser.driver.isElementPresent(by.css('.content-list'));
         });
         browser.sleep(1000);
 
@@ -778,7 +778,7 @@ describe('monitoring', function() {
 
         monitoring.openMonitoring();
         browser.wait(function() {
-            return element.all(by.css('.content-list')).isPresent();
+            return browser.driver.isElementPresent(by.css('.content-list'));
         });
         browser.sleep(1000);
 
@@ -809,7 +809,7 @@ describe('monitoring', function() {
 
         monitoring.openMonitoring();
         browser.wait(function() {
-            return element.all(by.css('.content-list')).isPresent();
+            return browser.driver.isElementPresent(by.css('.content-list'));
         });
         browser.sleep(1000);
 
@@ -827,7 +827,7 @@ describe('monitoring', function() {
 
         monitoring.openMonitoring();
         browser.wait(function() {
-            return element.all(by.css('.content-list')).isPresent();
+            return browser.driver.isElementPresent(by.css('.content-list'));
         });
         browser.sleep(1000);
 
