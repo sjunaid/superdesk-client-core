@@ -158,7 +158,6 @@ describe('monitoring', function() {
         monitoring.toggleStage(0, 2);
         monitoring.toggleStage(0, 4);
         monitoring.toggleDeskOutput(0);
-        //monitoring.toggleScheduledDeskOutput(0);
         monitoring.nextStages();
         monitoring.toggleGlobalSearch(0);
         monitoring.toggleGlobalSearch(1);
@@ -168,7 +167,9 @@ describe('monitoring', function() {
         monitoring.saveSettings();
 
         monitoring.openMonitoring();
-        browser.sleep(7500);
+        browser.wait(function() {
+            return element.all(by.css('.content-list')).isDisplayed();
+        });
 
         expect(monitoring.getTextItem(0, 0)).toBe('ingest1');
         expect(monitoring.getTextItem(1, 2)).toBe('item6');
@@ -583,7 +584,9 @@ describe('monitoring', function() {
         monitoring.saveSettings();
 
         monitoring.openMonitoring();
-        browser.sleep(7500);
+        browser.wait(function() {
+            return element.all(by.css('.content-list')).isDisplayed();
+        });
 
         monitoring.fetchAndOpen(0, 3);
 
