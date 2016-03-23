@@ -11,7 +11,6 @@ describe('monitoring', function() {
     // Opens desk settings and configure monitoring settings for the named desk
     function setupDeskMonitoringSettings(name) {
         desks.openDesksSettings();
-        browser.sleep(2000);
         desks.showMonitoringSettings(name.toUpperCase());
     }
 
@@ -27,9 +26,7 @@ describe('monitoring', function() {
         monitoring.nextReorder();
         monitoring.saveSettings();
 
-        monitoring.openMonitoring().then(function() {
-            browser.sleep(10000);
-        });
+        monitoring.openMonitoring();
 
         expect(monitoring.getTextItem(0, 2)).toBe('item6');
     });
@@ -79,9 +76,7 @@ describe('monitoring', function() {
         monitoring.nextReorder();
         monitoring.saveSettings();
 
-        monitoring.openMonitoring().then(function() {
-            browser.sleep(10000);
-        });
+        monitoring.openMonitoring();
 
         expect(monitoring.getTextItem(0, 0)).toBe('item1');
         expect(monitoring.getTextItem(0, 1)).toBe('item2');
@@ -96,9 +91,7 @@ describe('monitoring', function() {
         monitoring.nextReorder();
         monitoring.saveSettings();
 
-        monitoring.openMonitoring().then(function() {
-            browser.sleep(10000);
-        });
+        monitoring.openMonitoring();
 
         expect(monitoring.getTextItem(0, 0)).toBe('ingest1');
     });
@@ -117,9 +110,7 @@ describe('monitoring', function() {
         monitoring.nextReorder();
         monitoring.saveSettings();
 
-        monitoring.openMonitoring().then(function() {
-            browser.sleep(10000);
-        });
+        monitoring.openMonitoring();
 
         expect(monitoring.getTextItem(0, 2)).toBe('item6');
         expect(monitoring.getTextItem(2, 0)).toBe('ingest1');
@@ -148,9 +139,7 @@ describe('monitoring', function() {
         monitoring.nextReorder();
         monitoring.saveSettings();
 
-        monitoring.openMonitoring().then(function() {
-            browser.sleep(10000);
-        });
+        monitoring.openMonitoring();
 
         expect(monitoring.getTextItem(1, 0)).toBe('ingest1');
     });
@@ -171,15 +160,13 @@ describe('monitoring', function() {
         monitoring.nextReorder();
         monitoring.saveSettings();
 
-        monitoring.openMonitoring().then(function() {
-            browser.sleep(10000);
-        });
+        monitoring.openMonitoring();
 
         expect(monitoring.getTextItem(0, 0)).toBe('ingest1');
         expect(monitoring.getTextItem(1, 2)).toBe('item6');
 
         desks.openDesksSettings();
-        browser.sleep(3000);
+
         desks.showMonitoringSettings('POLITIC DESK');
         monitoring.nextStages();
         monitoring.nextSearches();
@@ -209,9 +196,7 @@ describe('monitoring', function() {
 
         monitoring.saveSettings();
 
-        monitoring.openMonitoring().then(function() {
-            browser.sleep(10000);
-        });
+        monitoring.openMonitoring();
 
         expect(monitoring.getTextItem(0, 1)).toBe('item9');     // expect stage one 2nd item
         expect(monitoring.getTextItem(1, 0)).toBe('item1');     // expect personal 1st item
@@ -228,9 +213,7 @@ describe('monitoring', function() {
         monitoring.nextReorder();
         monitoring.saveSettings();
 
-        monitoring.openMonitoring().then(function() {
-            browser.sleep(10000);
-        });
+        monitoring.openMonitoring();
 
         expect(monitoring.getTextItem(0, 0)).toBe('ingest1');
     });
@@ -245,9 +228,7 @@ describe('monitoring', function() {
         monitoring.nextReorder();
         monitoring.saveSettings();
 
-        monitoring.openMonitoring().then(function() {
-            browser.sleep(10000);
-        });
+        monitoring.openMonitoring();
 
         expect(monitoring.getTextItem(0, 0)).toBe('item5');
         expect(monitoring.getTextItem(0, 1)).toBe('item9');
@@ -299,9 +280,7 @@ describe('monitoring', function() {
         monitoring.nextReorder();
         monitoring.saveSettings();
 
-        monitoring.openMonitoring().then(function() {
-            browser.sleep(10000);
-        });
+        monitoring.openMonitoring();
 
         expect(workspace.getCurrentDesk()).toEqual('POLITIC DESK');
         expect(monitoring.getTextItem(0, 2)).toBe('item6');
@@ -316,16 +295,14 @@ describe('monitoring', function() {
         expect(monitoring.getGroups().count()).toBe(7);
 
         desks.openDesksSettings();
-        browser.sleep(3000);
+
         desks.edit('Politic Desk');
         desks.showTab('stages');
         desks.removeStage('three');
         desks.showTab('macros');
         desks.save();
 
-        monitoring.openMonitoring().then(function() {
-            browser.sleep(10000);
-        });
+        monitoring.openMonitoring();
 
         expect(monitoring.getGroups().count()).toBe(6);
     });
@@ -342,9 +319,7 @@ describe('monitoring', function() {
         monitoring.nextReorder();
         monitoring.saveSettings();
 
-        monitoring.openMonitoring().then(function() {
-            browser.sleep(10000);
-        });
+        monitoring.openMonitoring();
 
         expect(monitoring.getTextItem(0, 0)).toBe('item3');
         expect(monitoring.getTextItem(1, 0)).toBe('item4');
@@ -359,9 +334,7 @@ describe('monitoring', function() {
         setupDeskMonitoringSettings('SPORTS DESK');
         monitoring.turnOffDeskWorkingStage(1);
 
-        monitoring.openMonitoring().then(function() {
-            browser.sleep(10000);
-        });
+        monitoring.openMonitoring();
 
         expect(workspace.getCurrentDesk()).toEqual('SPORTS DESK');
         expect(monitoring.getTextItem(1, 0)).toBe('item3');
@@ -383,9 +356,7 @@ describe('monitoring', function() {
         monitoring.nextReorder();
         monitoring.saveSettings();
 
-        monitoring.openMonitoring().then(function() {
-            browser.sleep(10000);
-        });
+        monitoring.openMonitoring();
 
         expect(monitoring.getTextItem(2, 0)).toBe('item5');
         expect(monitoring.getTextItem(2, 1)).toBe('item9');
@@ -404,9 +375,7 @@ describe('monitoring', function() {
         setupDeskMonitoringSettings('POLITIC DESK');
         monitoring.turnOffDeskWorkingStage(0);
 
-        monitoring.openMonitoring().then(function() {
-            browser.sleep(10000);
-        });
+        monitoring.openMonitoring();
 
         expect(monitoring.getTextItem(1, 0)).toBe('item5');
         expect(monitoring.getTextItem(1, 1)).toBe('item9');
@@ -431,9 +400,7 @@ describe('monitoring', function() {
         setupDeskMonitoringSettings('POLITIC DESK');
         monitoring.turnOffDeskWorkingStage(0);
 
-        monitoring.openMonitoring().then(function() {
-            browser.sleep(10000);
-        });
+        monitoring.openMonitoring();
 
         monitoring.openAction(2, 0);
         expect(authoring.save_button.isPresent()).toBeTruthy();
@@ -471,9 +438,7 @@ describe('monitoring', function() {
         setupDeskMonitoringSettings('POLITIC DESK');
         monitoring.turnOffDeskWorkingStage(0);
 
-        monitoring.openMonitoring().then(function() {
-            browser.sleep(10000);
-        });
+        monitoring.openMonitoring();
 
         expect(monitoring.getGroupItems(1).count()).toBe(4);
 
@@ -496,9 +461,7 @@ describe('monitoring', function() {
         monitoring.nextReorder();
         monitoring.saveSettings();
 
-        monitoring.openMonitoring().then(function() {
-            browser.sleep(10000);
-        });
+        monitoring.openMonitoring();
 
         expect(monitoring.getGroupItems(0).count()).toBe(2);
         monitoring.actionOnItem('Spike', 0, 0);
@@ -509,9 +472,7 @@ describe('monitoring', function() {
         setupDeskMonitoringSettings('POLITIC DESK');
         monitoring.turnOffDeskWorkingStage(0);
 
-        monitoring.openMonitoring().then(function() {
-            browser.sleep(10000);
-        });
+        monitoring.openMonitoring();
 
         expect(monitoring.getGroupItems(1).count()).toBe(4);
         monitoring.selectItem(1, 2);
@@ -546,9 +507,7 @@ describe('monitoring', function() {
         monitoring.nextReorder();
         monitoring.saveSettings();
 
-        monitoring.openMonitoring().then(function() {
-            browser.sleep(10000);
-        });
+        monitoring.openMonitoring();
 
         monitoring.openAction(0, 3); // creates new item
         expect(monitoring.getTextItem(0, 3)).toBe('ingest1');
@@ -565,9 +524,7 @@ describe('monitoring', function() {
         monitoring.nextReorder();
         monitoring.saveSettings();
 
-        monitoring.openMonitoring().then(function() {
-            browser.sleep(10000);
-        });
+        monitoring.openMonitoring();
 
         monitoring.openFetchAsOptions(0, 3);
 
@@ -587,9 +544,7 @@ describe('monitoring', function() {
         monitoring.nextReorder();
         monitoring.saveSettings();
 
-        monitoring.openMonitoring().then(function() {
-            browser.sleep(10000);
-        });
+        monitoring.openMonitoring();
 
         expect(monitoring.getTextItem(0, 0)).toBe('ingest1');
     });
@@ -603,9 +558,7 @@ describe('monitoring', function() {
         monitoring.nextReorder();
         monitoring.saveSettings();
 
-        monitoring.openMonitoring().then(function() {
-            browser.sleep(10000);
-        });
+        monitoring.openMonitoring();
 
         monitoring.fetchAndOpen(0, 3);
 
@@ -622,9 +575,7 @@ describe('monitoring', function() {
         monitoring.toggleScheduledDeskOutput(0);
         monitoring.saveSettings();
 
-        monitoring.openMonitoring().then(function() {
-            browser.sleep(10000);
-        });
+        monitoring.openMonitoring();
 
         expect(monitoring.getGroups().count()).toBe(6);
 
@@ -670,9 +621,7 @@ describe('monitoring', function() {
         monitoring.setMaxItems(0, 3);
         monitoring.saveSettings();
 
-        monitoring.openMonitoring().then(function() {
-            browser.sleep(10000);
-        });
+        monitoring.openMonitoring();
 
         expect(monitoring.getGroupItems(0).count()).toBe(9);
 
@@ -759,9 +708,7 @@ describe('monitoring', function() {
         setupDeskMonitoringSettings('POLITIC DESK');
         monitoring.turnOffDeskWorkingStage(0);
 
-        monitoring.openMonitoring().then(function() {
-            browser.sleep(10000);
-        });
+        monitoring.openMonitoring();
 
         monitoring.actionOnItem('Edit', 1, 0);
         authoring.sendToButton.click();
