@@ -11,7 +11,7 @@ describe('monitoring', function() {
     // Opens desk settings and configure monitoring settings for the named desk
     function setupDeskMonitoringSettings(name) {
         desks.openDesksSettings();
-        browser.sleep(3000);
+        browser.sleep(2000);
         desks.showMonitoringSettings(name.toUpperCase());
     }
 
@@ -31,6 +31,7 @@ describe('monitoring', function() {
         browser.wait(function() {
             return element.all(by.css('.content-list')).isDisplayed();
         });
+        browser.sleep(1000);
 
         expect(monitoring.getTextItem(0, 2)).toBe('item6');
     });
@@ -84,6 +85,7 @@ describe('monitoring', function() {
         browser.wait(function() {
             return element.all(by.css('.content-list')).isDisplayed();
         });
+        browser.sleep(1000);
 
         expect(monitoring.getTextItem(0, 0)).toBe('item1');
         expect(monitoring.getTextItem(0, 1)).toBe('item2');
@@ -102,6 +104,7 @@ describe('monitoring', function() {
         browser.wait(function() {
             return element.all(by.css('.content-list')).isDisplayed();
         });
+        browser.sleep(1000);
 
         expect(monitoring.getTextItem(0, 0)).toBe('ingest1');
     });
@@ -124,6 +127,7 @@ describe('monitoring', function() {
         browser.wait(function() {
             return element.all(by.css('.content-list')).isDisplayed();
         });
+        browser.sleep(1000);
 
         expect(monitoring.getTextItem(0, 2)).toBe('item6');
         expect(monitoring.getTextItem(2, 0)).toBe('ingest1');
@@ -156,6 +160,7 @@ describe('monitoring', function() {
         browser.wait(function() {
             return element.all(by.css('.content-list')).isDisplayed();
         });
+        browser.sleep(1000);
 
         expect(monitoring.getTextItem(1, 0)).toBe('ingest1');
     });
@@ -180,6 +185,7 @@ describe('monitoring', function() {
         browser.wait(function() {
             return element.all(by.css('.content-list')).isDisplayed();
         });
+        browser.sleep(1000);
 
         expect(monitoring.getTextItem(0, 0)).toBe('ingest1');
         expect(monitoring.getTextItem(1, 2)).toBe('item6');
@@ -219,6 +225,7 @@ describe('monitoring', function() {
         browser.wait(function() {
             return element.all(by.css('.content-list')).isDisplayed();
         });
+        browser.sleep(1000);
 
         expect(monitoring.getTextItem(0, 1)).toBe('item9');     // expect stage one 2nd item
         expect(monitoring.getTextItem(1, 0)).toBe('item1');     // expect personal 1st item
@@ -239,6 +246,7 @@ describe('monitoring', function() {
         browser.wait(function() {
             return element.all(by.css('.content-list')).isDisplayed();
         });
+        browser.sleep(1000);
 
         expect(monitoring.getTextItem(0, 0)).toBe('ingest1');
     });
@@ -257,6 +265,7 @@ describe('monitoring', function() {
         browser.wait(function() {
             return element.all(by.css('.content-list')).isDisplayed();
         });
+        browser.sleep(1000);
 
         expect(monitoring.getTextItem(0, 0)).toBe('item5');
         expect(monitoring.getTextItem(0, 1)).toBe('item9');
@@ -312,6 +321,7 @@ describe('monitoring', function() {
         browser.wait(function() {
             return element.all(by.css('.content-list')).isDisplayed();
         });
+        browser.sleep(1000);
 
         expect(workspace.getCurrentDesk()).toEqual('POLITIC DESK');
         expect(monitoring.getTextItem(0, 2)).toBe('item6');
@@ -337,6 +347,7 @@ describe('monitoring', function() {
         browser.wait(function() {
             return element.all(by.css('.content-list')).isDisplayed();
         });
+        browser.sleep(1000);
 
         expect(monitoring.getGroups().count()).toBe(6);
     });
@@ -357,6 +368,7 @@ describe('monitoring', function() {
         browser.wait(function() {
             return element.all(by.css('.content-list')).isDisplayed();
         });
+        browser.sleep(1000);
 
         expect(monitoring.getTextItem(0, 0)).toBe('item3');
         expect(monitoring.getTextItem(1, 0)).toBe('item4');
@@ -375,6 +387,7 @@ describe('monitoring', function() {
         browser.wait(function() {
             return element.all(by.css('.content-list')).isDisplayed();
         });
+        browser.sleep(1000);
 
         expect(workspace.getCurrentDesk()).toEqual('SPORTS DESK');
         expect(monitoring.getTextItem(1, 0)).toBe('item3');
@@ -400,6 +413,7 @@ describe('monitoring', function() {
         browser.wait(function() {
             return element.all(by.css('.content-list')).isDisplayed();
         });
+        browser.sleep(1000);
 
         expect(monitoring.getTextItem(2, 0)).toBe('item5');
         expect(monitoring.getTextItem(2, 1)).toBe('item9');
@@ -422,6 +436,7 @@ describe('monitoring', function() {
         browser.wait(function() {
             return element.all(by.css('.content-list')).isDisplayed();
         });
+        browser.sleep(1000);
 
         expect(monitoring.getTextItem(1, 0)).toBe('item5');
         expect(monitoring.getTextItem(1, 1)).toBe('item9');
@@ -450,6 +465,7 @@ describe('monitoring', function() {
         browser.wait(function() {
             return element.all(by.css('.content-list')).isDisplayed();
         });
+        browser.sleep(1000);
 
         monitoring.openAction(2, 0);
         expect(authoring.save_button.isPresent()).toBeTruthy();
@@ -491,6 +507,7 @@ describe('monitoring', function() {
         browser.wait(function() {
             return element.all(by.css('.content-list')).isDisplayed();
         });
+        browser.sleep(1000);
 
         expect(monitoring.getGroupItems(1).count()).toBe(4);
 
@@ -517,6 +534,7 @@ describe('monitoring', function() {
         browser.wait(function() {
             return element.all(by.css('.content-list')).isDisplayed();
         });
+        browser.sleep(1000);
 
         expect(monitoring.getGroupItems(0).count()).toBe(2);
         monitoring.actionOnItem('Spike', 0, 0);
@@ -531,6 +549,7 @@ describe('monitoring', function() {
         browser.wait(function() {
             return element.all(by.css('.content-list')).isDisplayed();
         });
+        browser.sleep(1000);
 
         expect(monitoring.getGroupItems(1).count()).toBe(4);
         monitoring.selectItem(1, 2);
@@ -569,6 +588,7 @@ describe('monitoring', function() {
         browser.wait(function() {
             return element.all(by.css('.content-list')).isDisplayed();
         });
+        browser.sleep(1000);
 
         monitoring.openAction(0, 3); // creates new item
         expect(monitoring.getTextItem(0, 3)).toBe('ingest1');
@@ -589,6 +609,7 @@ describe('monitoring', function() {
         browser.wait(function() {
             return element.all(by.css('.content-list')).isDisplayed();
         });
+        browser.sleep(1000);
 
         monitoring.openFetchAsOptions(0, 3);
 
@@ -612,6 +633,7 @@ describe('monitoring', function() {
         browser.wait(function() {
             return element.all(by.css('.content-list')).isDisplayed();
         });
+        browser.sleep(1000);
 
         expect(monitoring.getTextItem(0, 0)).toBe('ingest1');
     });
@@ -629,6 +651,7 @@ describe('monitoring', function() {
         browser.wait(function() {
             return element.all(by.css('.content-list')).isDisplayed();
         });
+        browser.sleep(1000);
 
         monitoring.fetchAndOpen(0, 3);
 
@@ -649,6 +672,7 @@ describe('monitoring', function() {
         browser.wait(function() {
             return element.all(by.css('.content-list')).isDisplayed();
         });
+        browser.sleep(1000);
 
         expect(monitoring.getGroups().count()).toBe(6);
 
@@ -698,6 +722,7 @@ describe('monitoring', function() {
         browser.wait(function() {
             return element.all(by.css('.content-list')).isDisplayed();
         });
+        browser.sleep(1000);
 
         expect(monitoring.getGroupItems(0).count()).toBe(9);
 
@@ -755,6 +780,7 @@ describe('monitoring', function() {
         browser.wait(function() {
             return element.all(by.css('.content-list')).isDisplayed();
         });
+        browser.sleep(1000);
 
         monitoring.actionOnItem('Edit', 1, 0);
         authoring.publish();
@@ -782,6 +808,10 @@ describe('monitoring', function() {
         monitoring.turnOffDeskWorkingStage(0);
 
         monitoring.openMonitoring();
+        browser.wait(function() {
+            return element.all(by.css('.content-list')).isDisplayed();
+        });
+        browser.sleep(1000);
 
         monitoring.previewAction(2, 2);
         expect(monitoring.getPreviewTitle()).toBe('item6');
@@ -799,6 +829,7 @@ describe('monitoring', function() {
         browser.wait(function() {
             return element.all(by.css('.content-list')).isDisplayed();
         });
+        browser.sleep(1000);
 
         monitoring.actionOnItem('Edit', 1, 0);
         authoring.sendToButton.click();
