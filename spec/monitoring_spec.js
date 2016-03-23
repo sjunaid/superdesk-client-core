@@ -6,7 +6,7 @@ var authoring = require('./helpers/authoring'),
     dashboard = require('./helpers/dashboard'),
     desks = require('./helpers/desks');
 
-describe('monitoring', function() {
+xdescribe('monitoring', function() {
 
     // Opens desk settings and configure monitoring settings for the named desk
     function setupDeskMonitoringSettings(name) {

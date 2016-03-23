@@ -6,7 +6,7 @@ var dashboard = require('./helpers/dashboard'),
     authoring = require('./helpers/authoring'),
     monitoring = require('./helpers/monitoring');
 
-xdescribe('dashboard', function() {
+describe('dashboard', function() {
 
     beforeEach(function() {
         dashboard.openDashboard();
@@ -80,7 +80,6 @@ xdescribe('dashboard', function() {
 
     it('can display desk output in monitoring widget when an item gets published', function() {
         monitoring.openMonitoring();
-        browser.sleep(2000);
 
         expect(monitoring.getTextItem(3, 2)).toBe('item6');
         monitoring.actionOnItem('Edit', 3, 2);
@@ -97,7 +96,6 @@ xdescribe('dashboard', function() {
 
     it('can display \'not for publication\' state in monitoring widget for such item', function() {
         monitoring.openMonitoring();
-        browser.sleep(2000);
 
         expect(monitoring.getTextItem(3, 2)).toBe('item6');
 

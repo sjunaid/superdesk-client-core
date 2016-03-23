@@ -8,7 +8,7 @@ var authoring = require('./helpers/authoring'),
 var Login = require('./helpers/pages').login;
 var logout = require('./helpers/pages').logout;
 
-xdescribe('notifications', function() {
+describe('notifications', function() {
 
     beforeEach(function() {
         monitoring.openMonitoring();
@@ -54,7 +54,6 @@ xdescribe('notifications', function() {
         monitoring.saveSettings();
 
         monitoring.openMonitoring();
-        browser.sleep(5000);
 
         monitoring.actionOnItem('Edit', 1, 0);
         authoring.showComments();
