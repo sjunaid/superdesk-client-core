@@ -150,7 +150,7 @@ describe('monitoring', function() {
         expect(monitoring.getTextItem(1, 0)).toBe('ingest1');
     });
 
-    it('configure stage and search and then reorder', function() {
+    xit('configure stage and search and then reorder', function() {
         setupDeskMonitoringSettings('POLITIC DESK');
         monitoring.turnOffDeskWorkingStage(0, false);
 
@@ -182,7 +182,7 @@ describe('monitoring', function() {
         expect(monitoring.getOrderItemText(2)).toBe('global saved search ingest1');
     });
 
-    it('configure a stage, a saved search and personal and then set max items', function() {
+    xit('configure a stage, a saved search and personal and then set max items', function() {
         setupDeskMonitoringSettings('POLITIC DESK');
         monitoring.turnOffDeskWorkingStage(0, false);
 
@@ -636,16 +636,15 @@ describe('monitoring', function() {
         setupDeskMonitoringSettings('POLITIC DESK');
         monitoring.turnOffDeskWorkingStage(0, false);
 
+        // Keep Only global search on and turn off rest of stages
         monitoring.toggleStage(0, 1);
         monitoring.toggleStage(0, 2);
+        monitoring.toggleStage(0, 3);
         monitoring.toggleStage(0, 4);
         monitoring.toggleDeskOutput(0);
-        monitoring.toggleScheduledDeskOutput(0);
         monitoring.nextStages();
         monitoring.toggleGlobalSearch(2);
         monitoring.nextSearches();
-        // bring global search group in first place in monitoring view
-        monitoring.moveOrderItem(2, 0);
         monitoring.nextReorder();
 
         //limit the size of group for the sake of scroll bar
