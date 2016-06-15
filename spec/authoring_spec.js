@@ -356,15 +356,6 @@ describe('authoring', function() {
         browser.actions().sendKeys(protractor.Key.DOWN).perform();
         expect(browser.driver.switchTo().activeElement().getText()).toEqual('crime, law and justice');
     });
-    //ToDo: Need to fix as multi-edit option is now available in more-actions
-    xit('disable multi-edit option when action is kill', function() {
-        expect(monitoring.getTextItem(2, 0)).toBe('item5');
-        monitoring.actionOnItem('Edit', 2, 0);
-        authoring.publish();
-        monitoring.filterAction('text');
-        monitoring.actionOnItem('Kill item', 5, 0);
-        expect(authoring.multieditButton.isEnabled()).toBe(false);
-    });
 
     it('open publish item with footer text without <br> tag', function() {
         expect(monitoring.getTextItem(2, 0)).toBe('item5');
