@@ -11,6 +11,9 @@ export function AggregateCtrl($scope, api, desks, workspaces, preferencesService
     this.groups = [];
     this.spikeGroups = [];
     this.modalActive = false;
+    this.displayOnlyCurrentStep = false;
+    this.columnsLimit = null;
+    this.currentStep = 'desks';
     this.searchLookup = {};
     this.deskLookup = {};
     this.stageLookup = {};
@@ -87,25 +90,56 @@ export function AggregateCtrl($scope, api, desks, workspaces, preferencesService
             });
         } else {
             return workspaces.getActiveId()
-                .then(function(activeWorkspace) {
-                    if (self.settings != null && self.settings.desk) {
-                        return deskMonitoringConfig(self.settings.desk);
-                    } else if (activeWorkspace.type === 'workspace') {
-                        return preferencesService.get(PREFERENCES_KEY)
-                            .then(function(preference) {
-                                if (preference && preference[activeWorkspace.id] && preference[activeWorkspace.id].groups) {
-                                    return {'type': 'workspace', 'groups': preference[activeWorkspace.id].groups};
+            .then(function(activeWorkspace) {
+                if (self.settings != null && self.settings.desk) {
+                    return deskMonitoringConfig(self.settings.desk);
+                } else if (activeWorkspace.type === 'workspace') {
+                    return preferencesService.get(PREFERENCES_KEY)
+                    .then(function(preference) {
+                        if (preference && preference[activeWorkspace.id] && preference[activeWorkspace.id].groups) {
+                            return {'type': 'workspace', 'groups': preference[activeWorkspace.id].groups};
+                        }
+                        return {'type': 'workspace', 'groups': []};
+                    });
+                } else if (activeWorkspace.type === 'desk') {
+                    // Read available groups from user preferences first.
+                    return preferencesService.get(PREFERENCES_KEY).then(function(preference) {
+                        let desk = self.deskLookup[activeWorkspace.id];
+                        let monitoringSettings = desk ? desk.monitoring_settings || [] : [];
+                        let activePrefGroups = preference[activeWorkspace.id] ? preference[activeWorkspace.id].groups || [] : [];
+
+                        if (activePrefGroups.length) {
+                            if (monitoringSettings.length) {
+                                // determine symetric difference b/w desk monitoring settings & user preferences groups, to compare if
+                                // available stages are different now due to stages activated/deactivated in desk's monitoring settings.
+                                let diff = _.xorBy(monitoringSettings, activePrefGroups, '_id');
+
+                                if (diff.length) {
+                                    // if different, that means available stages/groups are changed now in desk monitoring settings
+                                    // so simply return recent desk monitoring settings.
+                                    return {'type': 'desk', 'groups': monitoringSettings};
+                                } else {
+                                    // update groups in preferences with any changes in desk's monitoring settings groups.
+                                    activePrefGroups.forEach(function(group) {
+                                        return angular.extend(group, monitoringSettings.find(grp => grp._id === group._id));
+                                    });
+
+                                    return {'type': 'desk', 'groups': activePrefGroups};
                                 }
-                                return {'type': 'workspace', 'groups': []};
-                            });
-                    } else if (activeWorkspace.type === 'desk') {
-                        var desk = self.deskLookup[activeWorkspace.id];
+                            }
+
+                            return {'type': 'desk', 'groups': activePrefGroups};
+                        }
+                        // when no user preferences found
                         if (desk && desk.monitoring_settings) {
                             return {'type': 'desk', 'groups': desk.monitoring_settings};
+                        } else {
+                            return {'type': 'desk', 'groups': []};
                         }
-                    }
-                    return {'type': 'desk', 'groups': []};
-                });
+                    });
+                }
+                return {'type': 'desk', 'groups': []};
+            });
         }
     };
 
@@ -328,7 +362,7 @@ export function AggregateCtrl($scope, api, desks, workspaces, preferencesService
     /**
      * For edit monitoring settings add desk groups to the list
      */
-    this.edit = function() {
+    this.edit = function(currentStep, displayOnlyCurrentStep) {
         this.editGroups = {};
         var _groups = this.groups;
         this.refreshGroups().then(function() {
@@ -359,7 +393,11 @@ export function AggregateCtrl($scope, api, desks, workspaces, preferencesService
                 }
             });
         });
+
         this.modalActive = true;
+
+        this.currentStep = currentStep || 'desks';
+        this.displayOnlyCurrentStep = displayOnlyCurrentStep;
     };
 
     this.searchOnEnter = function($event, query) {
