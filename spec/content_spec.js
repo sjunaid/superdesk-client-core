@@ -123,10 +123,9 @@ describe('content', function() {
     it('can create empty package in a desk', function() {
         workspace.switchToDesk('SPORTS DESK');
         content.setListView();
-
         element(by.className('sd-create-btn')).click();
         element(by.id('create_package')).click();
-
+        browser.sleep(500);
         element.all(by.model('item.headline')).first().sendKeys('Empty Package');
         authoring.save();
         authoring.close();

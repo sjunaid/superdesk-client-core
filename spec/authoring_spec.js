@@ -16,6 +16,25 @@ describe('authoring', function() {
         monitoring.openMonitoring();
     });
 
+    it('authoring operations with package', function() {
+        //allows to create a new empty package
+        monitoring.createItemAction('create_package');
+        expect(element(by.className('packaging-screen')).isDisplayed()).toBe(true);
+        authoring.close();
+
+        //can edit packages in which the item was linked
+        expect(monitoring.getTextItem(2, 1)).toBe('item9');
+        browser.driver.manage().window().maximize();
+        monitoring.actionOnItem('Edit', 2, 1);
+        authoring.showPackages();
+        expect(authoring.getPackages().count()).toBe(1);
+        expect(authoring.getPackage(0).element(by.tagName('a')).getText()).toMatch('PACKAGE2');
+        authoring.getPackage(0).element(by.tagName('a')).click();
+        authoring.showInfo();
+        expect(authoring.getGUID().getText()).toMatch('package2');
+        authoring.close();
+    });
+
     it('add an embed and respect the order', function() {
         // try with same block content
         monitoring.actionOnItem('Edit', 2, 0);
@@ -103,22 +122,6 @@ describe('authoring', function() {
         ctrlKey('y');
         expect(authoring.getBodyText()).toBe('TwoWordsitem5 text');
         authoring.save();
-        authoring.close();
-
-        //allows to create a new empty package
-        monitoring.createItemAction('create_package');
-        expect(element(by.className('packaging-screen')).isDisplayed()).toBe(true);
-        authoring.close();
-
-        //can edit packages in which the item was linked
-        expect(monitoring.getTextItem(2, 1)).toBe('item9');
-        monitoring.actionOnItem('Edit', 2, 1);
-        authoring.showPackages();
-        expect(authoring.getPackages().count()).toBe(1);
-        expect(authoring.getPackage(0).getText()).toMatch('PACKAGE2');
-        authoring.getPackage(0).element(by.tagName('a')).click();
-        authoring.showInfo();
-        expect(authoring.getGUID().getText()).toMatch('package2');
         authoring.close();
 
         //can change normal theme

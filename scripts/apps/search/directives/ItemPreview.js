@@ -14,6 +14,8 @@ export function ItemPreview(asset, storage) {
             scope.close();
         } else if (scope.item && args && args.item === scope.item._id) {
             scope.close();
+        } else if (scope.item && !args.item) {
+            scope.close();
         }
     }
 
