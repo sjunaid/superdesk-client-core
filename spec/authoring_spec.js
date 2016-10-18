@@ -60,6 +60,24 @@ describe('authoring', function() {
         authoring.blockContains(2, body2.replace(/\n$/, ''));
         authoring.blockContains(4, body3.replace(/\n$/, ''));
     });
+    
+    it('authoring operations with package', function() {
+        //allows to create a new empty package
+        monitoring.createItemAction('create_package');
+        expect(element(by.className('packaging-screen')).isDisplayed()).toBe(true);
+        authoring.close();
+
+        //can edit packages in which the item was linked
+        expect(monitoring.getTextItem(2, 1)).toBe('item9');
+        monitoring.actionOnItem('Edit', 2, 1);
+        authoring.showPackages();
+        expect(authoring.getPackages().count()).toBe(1);
+        expect(authoring.getPackage(0).getText()).toMatch('PACKAGE2');
+        authoring.getPackage(0).element(by.tagName('a')).click();
+        authoring.showInfo();
+        expect(authoring.getGUID().getText()).toMatch('package2');
+        authoring.close();
+    });
 
     it('authoring operations', function() {
         //undo and redo operations by using CTRL+Z and CTRL+y ...
@@ -103,22 +121,6 @@ describe('authoring', function() {
         ctrlKey('y');
         expect(authoring.getBodyText()).toBe('TwoWordsitem5 text');
         authoring.save();
-        authoring.close();
-
-        //allows to create a new empty package
-        monitoring.createItemAction('create_package');
-        expect(element(by.className('packaging-screen')).isDisplayed()).toBe(true);
-        authoring.close();
-
-        //can edit packages in which the item was linked
-        expect(monitoring.getTextItem(2, 1)).toBe('item9');
-        monitoring.actionOnItem('Edit', 2, 1);
-        authoring.showPackages();
-        expect(authoring.getPackages().count()).toBe(1);
-        expect(authoring.getPackage(0).getText()).toMatch('PACKAGE2');
-        authoring.getPackage(0).element(by.tagName('a')).click();
-        authoring.showInfo();
-        expect(authoring.getGUID().getText()).toMatch('package2');
         authoring.close();
 
         //can change normal theme
