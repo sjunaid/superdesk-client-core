@@ -59,6 +59,10 @@ export function MonitoringGroup(cards, api, authoringWorkspace, $timeout, superd
                 queryItems();
             });
 
+            scope.$on('$routeUpdate', function() {
+                queryItems();
+            });
+
             scope.$on('task:stage', scheduleQuery);
             scope.$on('item:spike', scheduleIfShouldUpdate);
             scope.$on('item:copy', scheduleQuery);
@@ -69,16 +73,9 @@ export function MonitoringGroup(cards, api, authoringWorkspace, $timeout, superd
                 queryItems();
                 preview(args.item);
             });
+
             scope.$on('item:unspike', scheduleIfShouldUpdate);
-            scope.$on('$routeUpdate', function(event, data) {
-                scope.scrollTop = 0;
-                data.force = true;
-                scope.showRefresh = false;
-                scheduleQuery(event, data);
-                if (scope.viewColumn) {
-                    updateGroupStyle();
-                }
-            });
+
             scope.$on('broadcast:preview', function(event, args) {
                 scope.previewingBroadcast = true;
                 if (args.item != null) {
@@ -161,13 +158,12 @@ export function MonitoringGroup(cards, api, authoringWorkspace, $timeout, superd
                 }
             });
 
-            // refreshes the list for matching group or view type only or if swimlane view is ON.
+            // refreshes the list for matching group or view type.
             scope.$on('refresh:list', function(event, group) {
                 var _viewType = event.currentScope.viewType || '';
 
                 if (group && group._id === scope.group._id ||
-                        _.includes(['highlights', 'spiked'], _viewType) ||
-                        !group && scope.viewColumn) {
+                        _.includes(['highlights', 'spiked', 'monitoring', 'deskOutput'], _viewType)) {
                     scope.refreshGroup();
                 }
             });

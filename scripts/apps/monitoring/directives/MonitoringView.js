@@ -3,8 +3,8 @@
  *
  * it's a directive so that it can be put together with authoring into some container directive
  */
-MonitoringView.$inject = ['$rootScope', 'authoringWorkspace', 'pageTitle', '$timeout'];
-export function MonitoringView($rootScope, authoringWorkspace, pageTitle, $timeout) {
+MonitoringView.$inject = ['$rootScope', 'authoringWorkspace', 'pageTitle', '$timeout', '$location'];
+export function MonitoringView($rootScope, authoringWorkspace, pageTitle, $timeout, $location) {
     return {
         templateUrl: 'scripts/apps/monitoring/views/monitoring-view.html',
         controller: 'Monitoring',
@@ -22,7 +22,7 @@ export function MonitoringView($rootScope, authoringWorkspace, pageTitle, $timeo
             scope.viewColumn = scope.monitoring.viewColumn;
 
             /**
-             * Toggle viewColumn to switch views between swimlane and list
+             * Toggle viewColumn to switch views between swimlane and list.
              */
             scope.displayColumn = function() {
                 scope.viewColumn = !scope.viewColumn;
@@ -50,7 +50,7 @@ export function MonitoringView($rootScope, authoringWorkspace, pageTitle, $timeo
 
                 // If scroll bar leaves top position update scope.scrollTop
                 // which is used to display refresh button on list item updates
-                if ($event.currentTarget.scrollTop >= 0 && $event.currentTarget.scrollTop < 100) {
+                if (scope.viewColumn && $event.currentTarget.scrollTop >= 0 && $event.currentTarget.scrollTop < 100) {
                     scope.$applyAsync(function() {
                         scope.scrollTop = scope.monitoring.scrollTop = $event.currentTarget.scrollTop;
 
@@ -93,6 +93,24 @@ export function MonitoringView($rootScope, authoringWorkspace, pageTitle, $timeo
                     }, 1000, false);
                 }
             }
+
+            scope.$watch(function getSearchParams() {
+                return _.omit($location.search(), ['_id', 'item']);
+            }, function(newValue, oldValue) {
+                if (newValue !== oldValue) {
+                    // when shouldRefresh false it avoids refresh & moving scroll to top when an item is opened
+                    // in authoring, hence maintains the current scroll position at just opened item.
+                    let shouldRefresh = newValue.action || oldValue.action ?
+                     newValue.action === oldValue.action : true;
+                    if (shouldRefresh) {
+                        scope.refreshGroup();
+                    }
+
+                    if (scope.viewColumn) {
+                        $rootScope.$broadcast('resize:header');
+                    }
+                }
+            }, true);
 
             // force refresh on refresh button click when in specific view such as single, highlights or spiked.
             scope.refreshGroup = function(group) {

@@ -52,7 +52,6 @@ export function SearchResults(
 	    var multiSelectable = attr.multiSelectable !== undefined;
 
             scope.previewingBroadcast = false;
-            scope.shouldRefresh = true;
 
             var criteria = search.query($location.search()).getCriteria(true),
                 oldQuery = _.omit($location.search(), '_id');
@@ -93,17 +92,6 @@ export function SearchResults(
             scope.$on('content:update', queryItems);
             scope.$on('item:move', scheduleIfShouldUpdate);
 
-            scope.$on('$routeUpdate', function(event, data) {
-                if (scope.shouldRefresh) {
-                    scope.scrollTop = 0;
-                    data.force = true;
-                    scope.showRefresh = false;
-                    queryItems(event, data);
-                } else {
-                    scope.shouldRefresh = true;
-                }
-            });
-
             scope.$on('aggregations:changed', queryItems);
 
             scope.$on('broadcast:preview', function(event, args) {
@@ -124,10 +112,16 @@ export function SearchResults(
             });
 
             scope.$watch(function getSearchParams() {
-                return _.omit($location.search(), '_id');
+                return _.omit($location.search(), ['_id', 'item']);
             }, function(newValue, oldValue) {
                 if (newValue !== oldValue) {
-                    queryItems();
+                    // when shouldRefresh false it avoids refresh & moving scroll to top when an item is opened
+                    // in authoring, hence maintains the current scroll position at just opened item.
+                    let shouldRefresh = newValue.action || oldValue.action ?
+                     newValue.action === oldValue.action : true;
+                    if (shouldRefresh) {
+                        scope.refreshList();
+                    }
                 }
             }, true);
 
