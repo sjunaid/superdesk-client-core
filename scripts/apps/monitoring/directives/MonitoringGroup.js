@@ -201,7 +201,7 @@ export function MonitoringGroup(cards, api, authoringWorkspace, $timeout, superd
             function updateGroupStyle() {
                 if (scope.viewColumn) {
                     // maxHeight is not applicable for swimlane/column view, as each stages/column don't need to have scroll bars
-                    // because container scroll bar of monitoring view will serve scrolling
+                    // because container scroll bar of monitoring view will serve scrolling.
                     scope.style.maxHeight = null;
                     $rootScope.$broadcast('resize:header');
                 } else {
