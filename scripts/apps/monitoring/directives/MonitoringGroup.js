@@ -161,12 +161,20 @@ export function MonitoringGroup(cards, api, authoringWorkspace, $timeout, superd
             });
 
             // refreshes the list for matching group or view type only or if swimlane view is ON.
-            scope.$on('refresh:list', function(event, group) {
+            /*scope.$on('refresh:list', function(event, group) {
                 var _viewType = event.currentScope.viewType || '';
 
                 if (group && group._id === scope.group._id ||
                         _.includes(['highlights', 'spiked'], _viewType) ||
                         (!group && scope.viewColumn)) {
+                    scope.refreshGroup();
+                }
+            });*/
+            scope.$on('refresh:list', function(event, group) {
+                var _viewType = event.currentScope.viewType || '';
+
+                if (group && group._id === scope.group._id ||
+                        _.includes(['highlights', 'spiked', 'monitoring', 'deskOutput'], _viewType)) {
                     scope.refreshGroup();
                 }
             });

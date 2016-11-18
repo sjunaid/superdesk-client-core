@@ -3,8 +3,8 @@
  *
  * it's a directive so that it can be put together with authoring into some container directive
  */
-MonitoringView.$inject = ['$rootScope', 'authoringWorkspace', 'pageTitle', '$timeout'];
-export function MonitoringView($rootScope, authoringWorkspace, pageTitle, $timeout) {
+MonitoringView.$inject = ['$rootScope', 'authoringWorkspace', 'pageTitle', '$timeout', '$location'];
+export function MonitoringView($rootScope, authoringWorkspace, pageTitle, $timeout, $location) {
     return {
         templateUrl: 'scripts/apps/monitoring/views/monitoring-view.html',
         controller: 'Monitoring',
@@ -93,6 +93,22 @@ export function MonitoringView($rootScope, authoringWorkspace, pageTitle, $timeo
                     }, 1000, false);
                 }
             }
+
+            /*scope.$watch(function getSearchParams() {
+                return _.omit($location.search(), ['_id', 'item']);
+            }, function(newValue, oldValue) {
+                if (newValue !== oldValue) {
+                    let shouldRefresh =  (newValue.action || oldValue.action) ?
+                     newValue.action === oldValue.action : true;
+                    if (shouldRefresh) {
+                        scope.refreshGroup();
+                    }
+
+                    if (scope.viewColumn) {
+                        $rootScope.$broadcast('resize:header');
+                    }
+                }
+            }, true);*/
 
             // force refresh on refresh button click when in specific view such as single, highlights or spiked.
             scope.refreshGroup = function(group) {
